@@ -1,6 +1,7 @@
 import { React, useRef } from "react";
 import { Link, useHistory } from "react-router-dom";
 import swal from "sweetalert";
+import axios from "axios";
 function Log_In() {
     const history = useHistory();
     // const [data, setData] = useState({});
@@ -9,29 +10,19 @@ function Log_In() {
     const reddirect = async (e) => {
         e.preventDefault();
         try {
-            await fetch("http://localhost:8000/auth/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
+            const response = await axios({
+                method: "post",
+                url: "http://localhost:8000/auth/login",
+                data: {
                     username: username.current.value,
                     password: password.current.value,
-                }),
-            })
-                .then((response) => response.json())
-                .then((data) => {
-                    if (data.status === "success") {
-                        swal(
-                            "Success",
-                            "You have successfully Logged in",
-                            "success"
-                        );
-                        history.push("/");
-                    } else {
-                        swal("Login Failed", "invalid cradicial", "error");
-                    }
-                });
+                },
+            });
+            if (response.data.status === "success") {
+                swal("Login Successfully", "", "success");
+                history.push("/");
+            }
+            console.log(response);
         } catch (e) {
             console.log(e);
         }
