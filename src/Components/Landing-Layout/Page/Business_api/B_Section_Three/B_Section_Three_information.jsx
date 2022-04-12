@@ -157,7 +157,7 @@ function B_Section_Three_information() {
                             </svg>
                         </div>
                         <div className="flex mx-2 flex-col lg:items-center">
-                            <div className="mb-3 font-medium text-center text-xl">
+                            <div className="mb-3 font-medium text-left text-xl">
                                 Woohoo!
                             </div>
                             <div className="text-center text-base  font-normal text-gray-600">

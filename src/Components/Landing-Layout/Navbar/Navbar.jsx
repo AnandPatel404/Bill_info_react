@@ -1,9 +1,17 @@
 import { React, useState } from "react";
-import { Link } from "react-router-dom";
-function Layout() {
+import { Link, useRouteMatch } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+function Layout(props) {
     const [isOpen, setIsOpen] = useState(false);
+    const openNaBar = () => {
+        setIsOpen(true);
+    };
+    let { path, url } = useRouteMatch();
     return (
-        <header className="w-full text-white bg-primary_dark border-b-[1px] border-primary_bg top-0 sticky onscroll-shadow transition-shadow duration-500 z-20">
+        <header
+            className={`w-full  border-b-[1px] ${props.utils} ${props.bg} top-0 sticky onscroll-shadow transition-shadow duration-500 z-20`}
+        >
             <div
                 className="flex flex-col max-w-screen-xl mx-auto lg:items-center lg:justify-between lg:flex-row px-4 sm:px-8 md:px-4 xl:px-0 lg:py-0 py-3"
                 x-data=""
@@ -13,19 +21,25 @@ function Layout() {
                         to="/"
                         className="text-xl font-semibold tracking-widest text-white rounded-lg focus:outline-none focus:shadow-outline"
                     >
-                        <div className="flex items-start justify-start">
-                            <img
-                                src="/images/svg/billinfo_lite_logo.svg"
-                                alt=""
-                                className="h-6"
-                            />
+                        <div className="flex items-start justify-start ">
+                            {props.bg !== "bg-white" ? (
+                                <img
+                                    src="/images/svg/billinfo_lite_logo.svg"
+                                    className="h-6"
+                                />
+                            ) : (
+                                <img
+                                    src="/images/svg/billinfo_darklogo.svg"
+                                    className="h-6"
+                                />
+                            )}
                         </div>
                     </Link>
-                    <button
+                    <div
                         className="rounded-lg lg:hidden focus:outline-none focus:shadow-outline"
                         // onClick="open = !open"
                     >
-                        <svg
+                        {/* <svg
                             className="w-6 h-6"
                             fill="currentColor"
                             viewBox="0 0 20 20"
@@ -36,7 +50,7 @@ function Layout() {
                                 d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
                                 clipRule="evenodd"
                                 className="block"
-                                onClick={() => setIsOpen(!isOpen)}
+                                onClick={openNaBar}
                             ></path>
                             <path
                                 x-show="open"
@@ -45,8 +59,28 @@ function Layout() {
                                 clipRule="evenodd"
                                 className="hidden"
                             ></path>
-                        </svg>
-                    </button>
+                        </svg> */}
+                        <div onClick={openNaBar}>
+                            <FontAwesomeIcon
+                                icon={faBars}
+                                className={`w-6 h-6 ${
+                                    isOpen ? "hidden" : "block"
+                                }`}
+                            />
+                        </div>
+                        <div
+                            onClick={() => {
+                                setIsOpen(false);
+                            }}
+                        >
+                            <FontAwesomeIcon
+                                icon={faXmark}
+                                className={`w-6 h-6 ${
+                                    isOpen ? "block" : "hidden"
+                                }`}
+                            />
+                        </div>
+                    </div>
                 </div>
                 <nav
                     className={`flex-col ${
@@ -55,19 +89,19 @@ function Layout() {
                 >
                     <Link
                         to="/"
-                        className="bg-transparent pt-5 py-3 text-sm font-medium w-20 lg:mr-5 md:mt-0  hover:text-gray-100 focus:text-gray-100 focus:outline-none whitespace-nowrap focus:shadow-outline text-center hover:border-white hover:border-b-4"
+                        className="bg-transparent pt-5 py-3 text-sm font-medium w-20 lg:mr-5 md:mt-0   focus:text-gray-100 focus:outline-none whitespace-nowrap focus:shadow-outline text-center"
                     >
                         Home
                     </Link>
                     <Link
                         to="/business_api"
-                        className="bg-transparent pt-5 py-3 text-sm font-medium w-32 lg:mr-5 md:mt-0  hover:text-gray-100 focus:text-gray-100 focus:outline-none whitespace-nowrap focus:shadow-outline text-center border-b-4 border-primary_dark hover:border-white"
+                        className="bg-transparent pt-5 py-3 text-sm font-medium w-32 lg:mr-5 md:mt-0   focus:text-gray-100 focus:outline-none whitespace-nowrap focus:shadow-outline text-center  "
                     >
                         Business API
                     </Link>
                     <Link
                         to="/contact_us"
-                        className="bg-transparent pt-5 py-3 text-sm font-medium w-24 lg:mr-24 md:mt-0  hover:text-gray-100 focus:text-gray-100 focus:outline-none whitespace-nowrap focus:shadow-outline text-center border-b-4 border-primary_dark hover:border-white"
+                        className="bg-transparent pt-5 py-3 text-sm font-medium w-24 lg:mr-24 md:mt-0  focus:text-gray-100 focus:outline-none whitespace-nowrap focus:shadow-outline text-center "
                     >
                         Contact Us
                     </Link>
@@ -78,14 +112,14 @@ function Layout() {
                             </div>
                             <Link
                                 to="/auth/login"
-                                className="inline-flex items-center mt-4 underline pb-2 font-medium rounded text-sm hover:font-semibold text-white hover:text-gray-100 focus:text-gray-100 focus:outline-none md:mt-0"
+                                className="inline-flex items-center mt-4 underline pb-2 font-medium rounded text-sm hover:font-semibold  hover:text-gray-100 focus:text-gray-100 focus:outline-none md:mt-0"
                             >
                                 Sign in
                             </Link>
                         </div>
                         <Link
                             to="/auth/register"
-                            className="inline-flex items-center mt-4 lg:absolute top-2.5 right-0 px-4 py-2 font-medium rounded text-sm text-primary bg-white focus:outline-none md:mt-0"
+                            className={`inline-flex items-center mt-4 lg:absolute top-2.5 right-0 px-4 py-2 font-medium rounded text-sm  focus:outline-none md:mt-0 ${props.forButton}`}
                         >
                             Create Account
                         </Link>

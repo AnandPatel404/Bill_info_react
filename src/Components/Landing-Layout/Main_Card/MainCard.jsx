@@ -40,7 +40,11 @@ function MainCard() {
         <React.Fragment>
             <Switch>
                 <Route exact path="/">
-                    <Navbar />
+                    <Navbar
+                        utils=" text-white border-primary_bg"
+                        forButton="text-primary bg-white"
+                        bg="bg-primary_dark"
+                    />
                     <BillFaching_Section />
                     <Services_Section />
                     <Heading_For_Sction_two />
@@ -51,7 +55,11 @@ function MainCard() {
                     <Footer />
                 </Route>
                 <Route exact path="/business_api">
-                    <Navbar />
+                    <Navbar
+                        utils="text-black bg-white border-bottom border-slate-300"
+                        forButton="bg-primary_dark text-white"
+                        bg="bg-white"
+                    />
                     <B_Section_One_Heading />
                     <B_Section_One_Information />
                     <B_Section_Two_Heading />
