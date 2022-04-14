@@ -4,6 +4,15 @@ module.exports = {
         fontFamily: {
             Poppains: ["Poppins", "sans-seri"],
         },
+        container: {
+            padding: {
+                DEFAULT: "1rem",
+                sm: "2rem",
+                lg: "4rem",
+                xl: "5rem",
+                "2xl": "6rem",
+            },
+        },
         fontSize: {
             xxs: ".65rem",
             xs: ".75rem",
@@ -31,6 +40,7 @@ module.exports = {
                 nav_color: "#fafbfc",
                 icon_color_dark: "#1652f0",
                 icon_color: "#556080",
+                bg_dashbord: "#f6f9fc",
             },
         },
     },

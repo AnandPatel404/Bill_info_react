@@ -7,7 +7,7 @@ function App() {
     return (
         <div>
             <Switch>
-                <Route path="/">
+                <Route exact path="/">
                     <Landing_layout />
                 </Route>
                 <Route path="/users">

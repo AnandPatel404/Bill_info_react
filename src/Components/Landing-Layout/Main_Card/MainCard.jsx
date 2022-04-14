@@ -34,8 +34,9 @@ import Contect_us_Section from "../Page/Contect_us_Section/Contect_us";
 import Log_In from "../../Auth/Log_in/Log_In";
 import Sign_up from "../../Auth/Creat_Account/Sign_Up";
 import Footer from "../Footer/Footer";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useRouteMatch } from "react-router-dom";
 function MainCard() {
+    const { path, url } = useRouteMatch();
     return (
         <React.Fragment>
             <Switch>
@@ -54,7 +55,7 @@ function MainCard() {
                     <Information_Section_Four />
                     <Footer />
                 </Route>
-                <Route exact path="/business_api">
+                <Route path="/business_api">
                     <Navbar
                         utils="text-black bg-white border-bottom border-slate-300"
                         forButton="bg-primary_dark text-white"
@@ -73,16 +74,16 @@ function MainCard() {
                     <Footer />
                 </Route>
 
-                <Route exact path="/contact_us">
+                <Route path="/contact_us">
                     <Navbar />
                     <Contect_us_Section />
                     <Footer />
                 </Route>
-                <Route exact path="/auth/login">
+                <Route path="/auth/login">
                     <Navbar />
                     <Log_In />
                 </Route>
-                <Route exact path="/auth/register">
+                <Route path="/auth/register">
                     <Navbar />
                     <Sign_up />
                 </Route>
