@@ -89,19 +89,19 @@ function Layout(props) {
                 >
                     <Link
                         to="/"
-                        className="bg-transparent pt-5 py-3 text-sm font-medium w-20 lg:mr-5 md:mt-0   focus:text-gray-100 focus:outline-none whitespace-nowrap focus:shadow-outline text-center"
+                        className="bg-transparent pt-5 py-3 text-sm font-medium w-20 lg:mr-5 md:mt-0    focus:outline-none whitespace-nowrap focus:shadow-outline text-center"
                     >
                         Home
                     </Link>
                     <Link
                         to="/business_api"
-                        className="bg-transparent pt-5 py-3 text-sm font-medium w-32 lg:mr-5 md:mt-0   focus:text-gray-100 focus:outline-none whitespace-nowrap focus:shadow-outline text-center  "
+                        className="bg-transparent pt-5 py-3 text-sm font-medium w-32 lg:mr-5 md:mt-0    focus:outline-none whitespace-nowrap focus:shadow-outline text-center  "
                     >
                         Business API
                     </Link>
                     <Link
                         to="/contact_us"
-                        className="bg-transparent pt-5 py-3 text-sm font-medium w-24 lg:mr-24 md:mt-0  focus:text-gray-100 focus:outline-none whitespace-nowrap focus:shadow-outline text-center "
+                        className="bg-transparent pt-5 py-3 text-sm font-medium w-24 lg:mr-24 md:mt-0   focus:outline-none whitespace-nowrap focus:shadow-outline text-center "
                     >
                         Contact Us
                     </Link>

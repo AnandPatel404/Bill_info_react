@@ -15,18 +15,16 @@ function Sign_Up() {
     const password = useRef(null);
     const conformPassword = useRef(null);
     // const has = useRef(null);
-    const SendForm = (e) => {
+    const sendData = async (e) => {
         e.preventDefault();
-        if (
-            name.current.value === "" ||
-            email.current.value === "" ||
-            username.current.value === ""
-        ) {
-            swal("Oops!", "Please fill all the fields", "error");
-        }
-    };
-    const sendData = async () => {
         try {
+            if (
+                name.current.value === "" ||
+                email.current.value === "" ||
+                username.current.value === ""
+            ) {
+                swal("Oops!", "Please fill all the fields", "error");
+            }
             await fetch("http://localhost:8000/auth/send_otp", {
                 method: "post",
                 headers: {
@@ -50,10 +48,6 @@ function Sign_Up() {
                         );
                         setOtp(true);
                         setForPasswords(true);
-                        window.localStorage.setItem(
-                            "number",
-                            username.current.value
-                        );
                     } else {
                         swal("Error", "Something went wrong", "error");
                     }
@@ -65,16 +59,15 @@ function Sign_Up() {
             console.log(err);
         }
     };
-    console.log();
 
-    const otp_form = (e) => {
-        e.preventDefault();
-        if (otp_code.current.value == "") {
-            swal("Oops!", "Please fill all the fields", "error");
-        }
-    };
+    console.log(username);
     const otpdataSubmit = async (e) => {
+        e.preventDefault();
+
         try {
+            if (otp_code.current.value == "") {
+                swal("Oops!", "Please fill all the fields", "error");
+            }
             await fetch("http://localhost:8000/auth/otp_verify", {
                 method: "post",
                 headers: {
@@ -82,7 +75,7 @@ function Sign_Up() {
                 },
                 body: JSON.stringify({
                     otp: otp_code.current.value,
-                    username: window.localStorage.getItem("number"),
+                    username: username.current.value,
                 }),
             })
                 .then((res) => res.json())
@@ -96,15 +89,6 @@ function Sign_Up() {
                         );
                         setForPasswords(false);
                         window.localStorage.setItem("hash", data.hash);
-                        console.log(
-                            name,
-                            email,
-                            username,
-                            referral_code
-                            // password,
-                            // conformPassword,
-                            // hash
-                        );
                     } else {
                         swal("Error", "Something went wrong", "error");
                     }
@@ -129,7 +113,7 @@ function Sign_Up() {
                 },
                 body: JSON.stringify({
                     name: name.current.value,
-                    username: window.localStorage.getItem("number"),
+                    username: username.current.value,
                     email: email.current.value,
                     referral_code: referral_code.current.value,
                     password: password.current.value,
@@ -145,7 +129,6 @@ function Sign_Up() {
                             "You have successfully signed up",
                             "success"
                         );
-                        window.localStorage.removeItem("number");
                         window.localStorage.removeItem("hash");
                         History.push("/auth/login");
                     } else {
@@ -182,7 +165,6 @@ function Sign_Up() {
                             action=""
                             className="w-full mx-auto"
                             method="post"
-                            onSubmit={SendForm}
                         >
                             <div className="flex mb-4 flex-col">
                                 <label
@@ -291,7 +273,6 @@ function Sign_Up() {
                             action=""
                             className="w-full mx-auto"
                             method="POST"
-                            onSubmit={otp_form}
                         >
                             <input
                                 type="hidden"
