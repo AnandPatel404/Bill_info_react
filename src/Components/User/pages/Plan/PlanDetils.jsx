@@ -2,8 +2,8 @@ import React from "react";
 
 function PlanDetils(props) {
     return (
-        <div className="flex flex-col md:flex-row mt-8 border-[1px] ">
-            <div className="flex bg-[#f5f6f8] w-64 p-4">
+        <div className="flex flex-col lg:flex-row mt-8 border-[1px] ">
+            <div className="flex bg-[#f5f6f8]  lg:w-64 p-4">
                 <div className="flex text-3xl font-semibold  justify-center items-center">
                     <p className="name">{props.name}</p>
                 </div>

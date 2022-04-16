@@ -110,7 +110,10 @@ function Navbar_User() {
                             </li>
 
                             <li className="nav-link">
-                                <Link to="/" className="space-x-4">
+                                <Link
+                                    to="/users/purchase_report"
+                                    className="space-x-4"
+                                >
                                     <FontAwesomeIcon
                                         icon={faHouse}
                                         className="flex min-w-[1.5rem] p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"
