@@ -3,7 +3,7 @@ import React from "react";
 function DashbordContent() {
     return (
         <section className="bg-[#f6f9fc] h-screen">
-            <div className="container m-auto">
+            <div className="container pt-16 md:pl-20">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 py-4 gap-3  ">
                     <div
                         className="p-5 border-[1px] border-[rgb(236, 239, 241)]"

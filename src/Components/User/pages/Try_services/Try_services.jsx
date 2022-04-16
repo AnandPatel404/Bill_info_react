@@ -1,33 +1,9 @@
-import { React, useState, useEffect, componentDidMount } from "react";
-import info from "./information";
+import React from "react";
+import Container from "../../../Helper/Container";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
-function Services_Section() {
-    const [data, setData] = useState([]);
-
-    // useEffect(async () => {
-    //     try {
-    //         //services factch request
-    //         const services = await fetch("http://localhost:8000/try_service", {
-    //             method: "GET",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //                 Accept: "application/json",
-    //             },
-    //         });
-    //         // make it object fromate
-    //         const data = await services.json();
-    //         // set data to state
-    //         setData(data);
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // }, []);
-    // useEffect(() => {
-    //     setData(info);
-    // });
-
+function Try_services() {
     const options = {
         margin: 10,
         dots: false,
@@ -60,8 +36,8 @@ function Services_Section() {
     };
 
     return (
-        <section className="text-gray-800 ">
-            <div className="max-w-screen-xl mx-auto pb-32 px-12 sm:px-8 md:px-4 xl:px-16 pt-20 sm:pt-24 md:pt-34 overflow-x-hidden">
+        <section className="bg-[#f6f9fc]">
+            <Container className="container pt-20 md:ml-9 overflow-x-hidden">
                 <OwlCarousel className="slider-items owl-carousel" {...options}>
                     {/* {data.map((item) => {
                         <div className="item px-px" key={item.id}>
@@ -192,9 +168,97 @@ function Services_Section() {
                         </button>
                     </div>
                 </OwlCarousel>
-            </div>
+                <section className="tab-content mt-5 bg-[#fff] border-[1px] p-5">
+                    <div id="service_1 " className="tab-pane active">
+                        <div className="flex flex-col">
+                            <div className="name_and_heading">
+                                <div className="name font-semibold text-base mb-2">
+                                    Prepaid Mobile
+                                </div>
+                                <div className="heading text-sm text-[#74788D] mb-6">
+                                    <p>
+                                        Provide valuable, actionable feedback to
+                                        your users with HTML5 form
+                                        validation–available in all our
+                                        supported browsers.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="input_box ">
+                                <form
+                                    action=""
+                                    className="flex flex-col md:flex-row gap-3"
+                                >
+                                    <div className="first_box flex flex-col mb-4 flex-1">
+                                        <label
+                                            htmlFor="text"
+                                            className="mb-2 text-[#b8bbc2]"
+                                        >
+                                            Mobile no. :
+                                        </label>
+                                        <input
+                                            type="text"
+                                            name="number"
+                                            id="number "
+                                            placeholder="Enter Mobile Number"
+                                            className="py-[7.5px] px-3 focus:outline-none border-[1px] border-[#b8bbc2] rounded-[0.4rem]"
+                                        />
+                                    </div>
+                                    <div className="Second_box flex flex-col mb-4 flex-1">
+                                        <label
+                                            htmlFor="mobile_operator"
+                                            className="mb-2 text-[#b8bbc2]"
+                                        >
+                                            Operator :
+                                        </label>
+                                        <select
+                                            name="mobile_operator"
+                                            id="mobile_operator"
+                                            className="py-[7.5px] px-3 focus:outline-none border-[1px] border-[#b8bbc2] rounded-[0.4rem]"
+                                        >
+                                            <option value=" ">select</option>
+                                            <option value="AL">Alabama</option>
+                                            <option value="AR">Arkansas</option>
+                                            <option value="IL">Illinois</option>
+                                            <option value="IA">Iowa</option>
+                                            <option value="KS">Kansas</option>
+                                            <option value="KY">Kentucky</option>
+                                            <option value="LA">
+                                                Louisiana
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div className="submit_butoon mb-2 md:mt-4 items-center flex justify center">
+                                        <button
+                                            type="submit"
+                                            className="rounded-lg px-2 py-2 text-white bg-primary_dark"
+                                        >
+                                            Submit form
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <hr />
+                            <div className="two_button md:mt-4 items-start space-y-3 md:space-x-3 flex flex-col md:flex-row">
+                                <button
+                                    type="submit"
+                                    className="rounded-lg mt-3 px-2 py-2 text-white bg-btn_green"
+                                >
+                                    Large modal
+                                </button>
+                                <button
+                                    type="submit"
+                                    className="rounded-lg px-2 py-2 text-white bg-btn_green"
+                                >
+                                    Regular plan
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </Container>
         </section>
     );
 }
 
-export default Services_Section;
+export default Try_services;

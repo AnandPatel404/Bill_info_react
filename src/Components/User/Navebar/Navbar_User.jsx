@@ -1,13 +1,7 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faHouse,
-    faBars,
-    faCompress,
-    faCircleUser,
-    faChevronCircleRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { faHouse, faXmark, faBars } from "@fortawesome/free-solid-svg-icons";
 function Navbar_User() {
     const [isOpen, setIsOpen] = useState(false);
     let { path, url } = useRouteMatch();
@@ -19,11 +13,18 @@ function Navbar_User() {
     };
     const closeNav = () => {
         setIsOpen(false);
-        //
+        console.log("closed");
     };
+    useEffect(() => {
+        document.title = `Billinfo | ${lastIndex}`;
+    });
     return (
         <section>
-            <nav className={`sidebar ${isOpen ? " sidebar" : "close"}`}>
+            <nav
+                className={`sidebar hidden lg:inline-block ${
+                    isOpen ? " sidebar" : "close"
+                }`}
+            >
                 <header>
                     <div className="logo_and_handburger flex flex-row justify-between px-3 py-2 items-center">
                         <div className="logo">
@@ -32,10 +33,10 @@ function Navbar_User() {
                             </h1>
                         </div>
                         <div
-                            className="handburger text-icon_color text-base text nav-text"
+                            className="handburger text-icon_color text-xl text nav-text"
                             onClick={closeNav}
                         >
-                            <FontAwesomeIcon icon={faBars} />
+                            <FontAwesomeIcon icon={faXmark} />
                         </div>
                     </div>
                     <div
@@ -44,15 +45,18 @@ function Navbar_User() {
                             isOpen ? "hidden" : " flex"
                         }`}
                     >
-                        <FontAwesomeIcon icon={faChevronCircleRight} />
+                        <FontAwesomeIcon icon={faBars} />
                     </div>
                 </header>
 
                 <div className="menu-bar">
                     <div className="menu">
-                        <ul className="menu-links space-y-5 flex flex-col justify-center ">
+                        <ul className="menu-links space-y-5 flex flex-col justify-center font-semibold">
                             <li className="nav-link">
-                                <Link to="/" className="space-x-4">
+                                <Link
+                                    to="/users/dashboard"
+                                    className="space-x-4"
+                                >
                                     <FontAwesomeIcon
                                         icon={faHouse}
                                         className="flex min-w-[1.5rem] text-primary_dark p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"
@@ -64,7 +68,10 @@ function Navbar_User() {
                             </li>
 
                             <li className="nav-link">
-                                <Link to="/" className="space-x-4">
+                                <Link
+                                    to="/users/try_service"
+                                    className="space-x-4"
+                                >
                                     <FontAwesomeIcon
                                         icon={faHouse}
                                         className="flex min-w-[1.5rem] p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"
@@ -76,7 +83,10 @@ function Navbar_User() {
                             </li>
 
                             <li className="nav-link">
-                                <Link to="/" className="space-x-4">
+                                <Link
+                                    to="/users/op_status"
+                                    className="space-x-4"
+                                >
                                     <FontAwesomeIcon
                                         icon={faHouse}
                                         className="flex min-w-[1.5rem] p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"
@@ -88,7 +98,7 @@ function Navbar_User() {
                             </li>
                             <hr />
                             <li className="nav-link">
-                                <Link to="/" className="space-x-4">
+                                <Link to="/users/plan" className="space-x-4">
                                     <FontAwesomeIcon
                                         icon={faHouse}
                                         className="flex min-w-[1.5rem] p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"

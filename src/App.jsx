@@ -35,6 +35,14 @@ import Footer from "./Components/Landing-Layout/Footer/Footer";
 import HorizontalnavBar from "./Components/User/Navebar/Navbar";
 import VarticalNavbar from "./Components/User/Navebar/Navbar_User";
 import DasbordContennt from "./Components/User/pages/DashbordContent/DashbordContent";
+import Try_Service from "./Components/User/pages/Try_services/Try_services";
+import Operator_Status from "./Components/User/pages/oporetor_status/Opretor_Status";
+import Plan from "./Components/User/pages/Plan/Plan";
+import PlanDetils from "./Components/User/pages/Plan/PlanDetils";
+
+//helpers
+import Card from "./Components/Helper/Card";
+import Container from "./Components/Helper/Container";
 function App() {
     return (
         <div>
@@ -102,6 +110,32 @@ function App() {
                     <HorizontalnavBar />
                     <VarticalNavbar />
                     <DasbordContennt />
+                </Route>
+                <Route exact path="/users/try_service">
+                    <HorizontalnavBar />
+                    <VarticalNavbar />
+                    <Try_Service />
+                </Route>
+                <Route exact path="/users/op_status">
+                    <HorizontalnavBar />
+                    <VarticalNavbar />
+                    <Container>
+                        <Card>
+                            <Operator_Status />
+                        </Card>
+                    </Container>
+                </Route>
+                <Route exact path="/users/plan">
+                    <HorizontalnavBar />
+                    <VarticalNavbar />
+                    <Container>
+                        <Card>
+                            <Plan />
+                            <PlanDetils name="Starter+" req="4,000" price="6599" />
+                            <PlanDetils name="Basic+" req="7,000" price="8799" />
+                            <PlanDetils name="Pro+" req="10,000" price="11999"/>
+                        </Card>
+                    </Container>
                 </Route>
             </Switch>
         </div>
