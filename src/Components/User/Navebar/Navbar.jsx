@@ -100,7 +100,10 @@ function Navbar(props) {
                             />
                         </div>
                         <div>
-                            <Link to="/" className="text-[#212529]">
+                            <Link
+                                to="/users/change_password"
+                                className="text-[#212529]"
+                            >
                                 Change Password
                             </Link>
                         </div>

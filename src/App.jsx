@@ -94,6 +94,10 @@ const Contect_us_Section = lazy(() =>
 const Login = lazy(() => import("./Components/Auth/Log_in/Log_in"));
 // sign up
 const SignUp = lazy(() => import("./Components/Auth/Creat_Account/Sign_Up"));
+// forget password
+const Forget_Password = lazy(() =>
+    import("./Components/Auth/Forget_Password/Forget_password")
+);
 const Footer = lazy(() => import("./Components/Landing-Layout/Footer/Footer"));
 
 // user section
@@ -134,18 +138,15 @@ const Api_cred_info = lazy(() =>
 // profile
 
 const Profile = lazy(() => import("./Components/User/pages/Profile/Profile"));
+const Change_password = lazy(() =>
+    import("./Components/User/pages/Change_Password/Chang_Password")
+);
 const User_Footer = lazy(() => import("./Components/User/Footer/User_Footer"));
 //helpers
 const Card = lazy(() => import("./Components/Helper/Card"));
 const Container = lazy(() => import("./Components/Helper/Container"));
 import Loader from "./Components/Helper/Loader";
 
-// const [nav, navIsOpen] = useState(false);
-// const openNav = () => {
-//     navIsOpen(!nav);
-//     console.log("clicked");
-// };
-// var a = nav;
 function App() {
     return (
         <div>
@@ -208,6 +209,14 @@ function App() {
                             bg="bg-primary_dark"
                         />
                         <Login />
+                    </Route>
+                    <Route exact path="/auth/forgot">
+                        <Navbar
+                            utils=" text-white border-primary_bg"
+                            forButton="text-primary bg-white"
+                            bg="bg-primary_dark"
+                        />
+                        <Forget_Password />
                     </Route>
                     {/* user's routes start */}
                     <Route exact path="/users/dashboard">
@@ -314,6 +323,16 @@ function App() {
                         <Container>
                             <Card>
                                 <Profile />
+                            </Card>
+                        </Container>
+                        <User_Footer />
+                    </Route>
+                    <Route exact path="/users/change_password">
+                        <HorizontalnavBar />
+                        <VarticalNavbar />
+                        <Container>
+                            <Card>
+                                <Change_password />
                             </Card>
                         </Container>
                         <User_Footer />
