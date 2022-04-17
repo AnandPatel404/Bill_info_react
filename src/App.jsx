@@ -117,11 +117,35 @@ const PlanDetils = lazy(() =>
 const Purchase_Report = lazy(() =>
     import("./Components/User/pages/purchase_report/Purchase_Report")
 );
+
+const Api_docs = lazy(() =>
+    import("./Components/User/pages/Api_Docs/Api_docs")
+);
+const Api_docs_info = lazy(() =>
+    import("./Components/User/pages/Api_Docs/Api_docs_info")
+);
+
+const Api_cred = lazy(() =>
+    import("./Components/User/pages/api_cred/Api_cred")
+);
+const Api_cred_info = lazy(() =>
+    import("./Components/User/pages/api_cred/Api_cred_info")
+);
+// profile
+
+const Profile = lazy(() => import("./Components/User/pages/Profile/Profile"));
 const User_Footer = lazy(() => import("./Components/User/Footer/User_Footer"));
 //helpers
 const Card = lazy(() => import("./Components/Helper/Card"));
 const Container = lazy(() => import("./Components/Helper/Container"));
 import Loader from "./Components/Helper/Loader";
+
+// const [nav, navIsOpen] = useState(false);
+// const openNav = () => {
+//     navIsOpen(!nav);
+//     console.log("clicked");
+// };
+// var a = nav;
 function App() {
     return (
         <div>
@@ -239,6 +263,57 @@ function App() {
                         <Container>
                             <Card>
                                 <Purchase_Report />
+                            </Card>
+                        </Container>
+                        <User_Footer />
+                    </Route>
+                    <Route exact path="/users/api_docs">
+                        <HorizontalnavBar />
+                        <VarticalNavbar />
+                        <Container>
+                            <Api_docs />
+                            <Card>
+                                <Api_docs_info />
+                            </Card>
+                            <Api_docs />
+                            <Card>
+                                <Api_docs_info />
+                            </Card>
+                        </Container>
+                        <User_Footer />
+                    </Route>
+                    <Route exact path="/users/api_cred">
+                        <HorizontalnavBar />
+                        <VarticalNavbar />
+                        <Container>
+                            <Api_cred />
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                                <Card>
+                                    <Api_cred_info
+                                        name="APi Token"
+                                        des="You can use below form to add new coupons and access via secured Rest API"
+                                        inputName="APi Token"
+                                        buttonName="Re-Generate"
+                                    />
+                                </Card>
+                                <Card>
+                                    <Api_cred_info
+                                        name="IP Address"
+                                        des="You can use below form to add new coupons and access via secured Rest API"
+                                        inputName="IP Address"
+                                        buttonName="Update"
+                                    />
+                                </Card>
+                            </div>
+                        </Container>
+                        <User_Footer />
+                    </Route>
+                    <Route exact path="/users/profile">
+                        <HorizontalnavBar />
+                        <VarticalNavbar />
+                        <Container>
+                            <Card>
+                                <Profile />
                             </Card>
                         </Container>
                         <User_Footer />

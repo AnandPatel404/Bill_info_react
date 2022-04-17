@@ -1,6 +1,4 @@
 import React from "react";
-import Container from "../../../Helper/Container";
-import Card from "../../../Helper/Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 function Plan() {
