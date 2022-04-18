@@ -221,7 +221,7 @@ function App() {
                     {/* user's routes start */}
                     <Route exact path="/users/dashboard">
                         <HorizontalnavBar />
-                        <VarticalNavbar />
+                        {/* <VarticalNavbar /> */}
                         <DasbordContennt />
                         <User_Footer />
                     </Route>
@@ -286,6 +286,7 @@ function App() {
                             </Card>
                             <Api_docs />
                             <Card>
+                                np
                                 <Api_docs_info />
                             </Card>
                         </Container>

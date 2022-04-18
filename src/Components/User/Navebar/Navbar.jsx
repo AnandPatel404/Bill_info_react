@@ -71,7 +71,7 @@ function Navbar(props) {
                 </div>
             </nav>
             <div
-                className={`profile absolute right-0 top-16 bg-[#fff] py-2 ${
+                className={`profile z-50 absolute right-0 top-12 md:top-20 bg-[#fff] py-2 ${
                     isOpen ? "block" : "hidden"
                 }`}
             >

@@ -17,13 +17,27 @@ function Navbar_User() {
     };
     useEffect(() => {
         document.title = `Billinfo | ${lastIndex}`;
-    });
+        if (window.innerWidth < 768) {
+            const ab = document.querySelector(".menu-bar");
+            const sidebar = document.querySelector(".sidebar");
+            const a = document.querySelectorAll(".iconHero").forEach((e) => {
+                e.classList.add("hidden"); //
+                e.classList.remove("iconHero");
+                if (e.classList.contains("hidden")) {
+                    ab.classList.remove("bg-[#FFF]");
+                    sidebar.removeAttribute("style");
+                    ab.style.backgroundColor = "transparent";
+                }
+            });
+        }
+    }, []);
     return (
         <section>
             <nav
-                className={`sidebar hidden md:inline-block ${
-                    isOpen ? " sidebar" : "close"
+                className={`sidebar  ${
+                    isOpen ? " sidebar bg-[#fff]" : "close"
                 }`}
+                style={{ boxShadow: "0 2px 4px rgb(15 34 58 / 12%)" }}
             >
                 <header>
                     <div className="logo_and_handburger flex flex-row justify-between px-3 py-2 items-center">
@@ -49,9 +63,9 @@ function Navbar_User() {
                     </div>
                 </header>
 
-                <div className="menu-bar">
-                    <div className="menu">
-                        <ul className="menu-links space-y-5 flex flex-col justify-center font-semibold">
+                <div className="menu-bar bg-[#FFF]">
+                    <div className="menu ">
+                        <ul className=" menu-links space-y-5 flex flex-col justify-center font-semibold ">
                             <li className="nav-link">
                                 <Link
                                     to="/users/dashboard"
@@ -59,7 +73,7 @@ function Navbar_User() {
                                 >
                                     <FontAwesomeIcon
                                         icon={faHouse}
-                                        className="flex min-w-[1.5rem] text-primary_dark p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"
+                                        className="iconHero flex min-w-[1.5rem] text-primary_dark p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"
                                     />
                                     <span className="text nav-text">
                                         Dashboard
@@ -74,7 +88,7 @@ function Navbar_User() {
                                 >
                                     <FontAwesomeIcon
                                         icon={faHouse}
-                                        className="flex min-w-[1.5rem] p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"
+                                        className="iconHero flex min-w-[1.5rem] p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"
                                     />
                                     <span className="text nav-text">
                                         Try Service
@@ -89,7 +103,7 @@ function Navbar_User() {
                                 >
                                     <FontAwesomeIcon
                                         icon={faHouse}
-                                        className="flex min-w-[1.5rem] p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"
+                                        className="iconHero flex min-w-[1.5rem] p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"
                                     />
                                     <span className="text nav-text">
                                         Opretor Status
@@ -101,7 +115,7 @@ function Navbar_User() {
                                 <Link to="/users/plan" className="space-x-4">
                                     <FontAwesomeIcon
                                         icon={faHouse}
-                                        className="flex min-w-[1.5rem] p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"
+                                        className="iconHero flex min-w-[1.5rem] p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"
                                     />
                                     <span className="text nav-text">
                                         Buy Plan
@@ -116,7 +130,7 @@ function Navbar_User() {
                                 >
                                     <FontAwesomeIcon
                                         icon={faHouse}
-                                        className="flex min-w-[1.5rem] p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"
+                                        className="iconHero flex min-w-[1.5rem] p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"
                                     />
                                     <span className="text nav-text">
                                         Purchase Report
@@ -131,7 +145,7 @@ function Navbar_User() {
                                 >
                                     <FontAwesomeIcon
                                         icon={faHouse}
-                                        className="flex min-w-[1.5rem] p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"
+                                        className="iconHero flex min-w-[1.5rem] p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"
                                     />
                                     <span className="text nav-text">
                                         API Docs
@@ -145,7 +159,7 @@ function Navbar_User() {
                                 >
                                     <FontAwesomeIcon
                                         icon={faHouse}
-                                        className="flex min-w-[1.5rem] p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"
+                                        className="iconHero flex min-w-[1.5rem] p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"
                                     />
                                     <span className="text nav-text">
                                         API Credentials
@@ -157,7 +171,7 @@ function Navbar_User() {
                                 <Link to="/" className="space-x-4">
                                     <FontAwesomeIcon
                                         icon={faHouse}
-                                        className="flex min-w-[1.5rem] p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"
+                                        className="iconHero flex min-w-[1.5rem] p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"
                                     />
                                     <span className="text nav-text">
                                         Settings
