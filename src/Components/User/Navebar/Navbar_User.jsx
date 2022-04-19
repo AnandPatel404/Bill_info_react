@@ -3,6 +3,7 @@ import { Link, useRouteMatch } from "react-router-dom";
 import * as Unicons from "@iconscout/react-unicons";
 function Navbar_User(props) {
     const [count, setCount] = useState(false);
+
     const c = () => {
         setCount(!count);
     };
@@ -138,6 +139,50 @@ function Navbar_User(props) {
                                 />
                                 <p className="text-lg">anand</p>
                                 <Unicons.UilAngleDown />
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        className={`profile z-50 absolute right-0 top-12 md:top-20 bg-[#fff] py-2 ${
+                            isOpen ? "block" : "hidden"
+                        }`}
+                    >
+                        <div className="flex flex-col space-between ">
+                            <div className="change_pasword flex my-2">
+                                <div>
+                                    <Unicons.UilUserCircle className="text-[#74788d] mx-2" />
+                                </div>
+                                <div>
+                                    <Link
+                                        to="/users/profile"
+                                        className="text-[#212529]"
+                                    >
+                                        Profile
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className="change_pasword flex my-2">
+                                <div>
+                                    <Unicons.UilUserCircle className="text-[#74788d] mx-2" />
+                                </div>
+                                <div>
+                                    <Link
+                                        to="/users/change_password"
+                                        className="text-[#212529]"
+                                    >
+                                        Change Password
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className="change_pasword flex my-2 ">
+                                <div>
+                                    <Unicons.UilUserCircle className="text-[#74788d] mx-2" />
+                                </div>
+                                <div>
+                                    <Link to="/" className="text-[#212529]">
+                                        Log Out
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>

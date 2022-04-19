@@ -101,7 +101,6 @@ const Forget_Password = lazy(() =>
 const Footer = lazy(() => import("./Components/Landing-Layout/Footer/Footer"));
 
 // user section
-const HorizontalnavBar = lazy(() => import("./Components/User/Navebar/Navbar"));
 const VarticalNavbar = lazy(() =>
     import("./Components/User/Navebar/Navbar_User")
 );
