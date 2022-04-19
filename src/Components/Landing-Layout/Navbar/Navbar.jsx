@@ -1,5 +1,5 @@
-import { React, useState } from "react";
-import { Link, useRouteMatch } from "react-router-dom";
+import { React, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 function Layout(props) {
@@ -7,7 +7,7 @@ function Layout(props) {
     const openNaBar = () => {
         setIsOpen(true);
     };
-    let { path, url } = useRouteMatch();
+
     return (
         <header
             className={`w-full  border-b-[1px] ${props.utils} ${props.bg} top-0 sticky onscroll-shadow transition-shadow duration-500 z-20`}

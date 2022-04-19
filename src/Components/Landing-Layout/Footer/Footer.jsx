@@ -167,7 +167,7 @@ function Footer() {
                 </div>
             </div>
             <div className="w-full px-8 mt-4 rounded-b-lg">
-                <div className="max-w-screen-xl flex flex-col flex-wrap mx-auto md:items-center lg:items-start md:flex-row md:flex-no-wrap py-5 px-4 sm:px-8 md:px-4 xl:px-0">
+                <div className=" flex flex-col flex-wrap mx-auto items-start md:flex-row md:flex-no-wrap py-5 px-4 sm:px-8 md:px-4 xl:px-0">
                     <p className="sm:text-left text-sm text-center text-black">
                         © 2021 billinfo.in
                     </p>

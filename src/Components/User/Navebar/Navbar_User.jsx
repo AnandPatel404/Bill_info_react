@@ -1,187 +1,150 @@
 import { React, useState, useEffect } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse, faXmark, faBars } from "@fortawesome/free-solid-svg-icons";
-function Navbar_User() {
+import * as Unicons from "@iconscout/react-unicons";
+function Navbar_User(props) {
+    const [count, setCount] = useState(false);
+    const c = () => {
+        setCount(!count);
+    };
+    const close = () => {
+        setCount(!count);
+    };
+
     const [isOpen, setIsOpen] = useState(false);
     let { path, url } = useRouteMatch();
     const navigation = url.split("/");
-    const lastIndex = navigation.slice(-1);
-    console.log(lastIndex);
-    const openNav = () => {
-        setIsOpen(true);
-    };
-    const closeNav = () => {
-        setIsOpen(false);
-        console.log("closed");
-    };
-    useEffect(() => {
-        document.title = `Billinfo | ${lastIndex}`;
-        if (window.innerWidth < 768) {
-            const ab = document.querySelector(".menu-bar");
-            const sidebar = document.querySelector(".sidebar");
-            const a = document.querySelectorAll(".iconHero").forEach((e) => {
-                e.classList.add("hidden"); //
-                e.classList.remove("iconHero");
-                if (e.classList.contains("hidden")) {
-                    ab.classList.remove("bg-[#FFF]");
-                    sidebar.removeAttribute("style");
-                    ab.style.backgroundColor = "transparent";
-                }
-            });
+    const lastIndex = `Dashbord | ${navigation.slice(-1)}`;
+    // console.log(lastIndex);
+    const fullScreen = () => {
+        if (document.fullscreenElement) {
+            document.exitFullscreen();
+        } else {
+            document.documentElement.requestFullscreen();
         }
-    }, []);
+    };
+    const userProfile = () => {
+        setIsOpen(!isOpen);
+    };
     return (
         <section>
-            <nav
-                className={`sidebar  ${
-                    isOpen ? " sidebar bg-[#fff]" : "close"
-                }`}
-                style={{ boxShadow: "0 2px 4px rgb(15 34 58 / 12%)" }}
-            >
-                <header>
-                    <div className="logo_and_handburger flex flex-row justify-between px-3 py-2 items-center">
-                        <div className="logo">
-                            <h1 className="font-semibold text-[1.4rem] text-primary_dark text nav-text">
-                                Billinfo
-                            </h1>
-                        </div>
-                        <div
-                            className="handburger text-icon_color text-xl text nav-text"
-                            onClick={closeNav}
-                        >
-                            <FontAwesomeIcon icon={faXmark} />
-                        </div>
-                    </div>
-                    <div
-                        onClick={openNav}
-                        className={`bx bx-chevron-right toggle ${
-                            isOpen ? "hidden" : " flex"
-                        }`}
-                    >
-                        <FontAwesomeIcon icon={faBars} />
-                    </div>
-                </header>
+            <nav className={`${count ? " close" : ""}`}>
+                <div className="logo-name text-primary_dark">
+                    <span className="logo_name font-semibold text-[1.4rem]">
+                        Billinfo
+                    </span>
+                </div>
 
-                <div className="menu-bar bg-[#FFF]">
-                    <div className="menu ">
-                        <ul className=" menu-links space-y-5 flex flex-col justify-center font-semibold ">
-                            <li className="nav-link">
-                                <Link
-                                    to="/users/dashboard"
-                                    className="space-x-4"
-                                >
-                                    <FontAwesomeIcon
-                                        icon={faHouse}
-                                        className="iconHero flex min-w-[1.5rem] text-primary_dark p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"
-                                    />
-                                    <span className="text nav-text">
-                                        Dashboard
-                                    </span>
-                                </Link>
-                            </li>
-
-                            <li className="nav-link">
-                                <Link
-                                    to="/users/try_service"
-                                    className="space-x-4"
-                                >
-                                    <FontAwesomeIcon
-                                        icon={faHouse}
-                                        className="iconHero flex min-w-[1.5rem] p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"
-                                    />
-                                    <span className="text nav-text">
-                                        Try Service
-                                    </span>
-                                </Link>
-                            </li>
-
-                            <li className="nav-link">
-                                <Link
-                                    to="/users/op_status"
-                                    className="space-x-4"
-                                >
-                                    <FontAwesomeIcon
-                                        icon={faHouse}
-                                        className="iconHero flex min-w-[1.5rem] p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"
-                                    />
-                                    <span className="text nav-text">
-                                        Opretor Status
-                                    </span>
-                                </Link>
-                            </li>
-                            <hr />
-                            <li className="nav-link">
-                                <Link to="/users/plan" className="space-x-4">
-                                    <FontAwesomeIcon
-                                        icon={faHouse}
-                                        className="iconHero flex min-w-[1.5rem] p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"
-                                    />
-                                    <span className="text nav-text">
-                                        Buy Plan
-                                    </span>
-                                </Link>
-                            </li>
-
-                            <li className="nav-link">
-                                <Link
-                                    to="/users/purchase_report"
-                                    className="space-x-4"
-                                >
-                                    <FontAwesomeIcon
-                                        icon={faHouse}
-                                        className="iconHero flex min-w-[1.5rem] p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"
-                                    />
-                                    <span className="text nav-text">
-                                        Purchase Report
-                                    </span>
-                                </Link>
-                            </li>
-
-                            <li className="nav-link">
-                                <Link
-                                    to="/users/api_docs"
-                                    className="space-x-4"
-                                >
-                                    <FontAwesomeIcon
-                                        icon={faHouse}
-                                        className="iconHero flex min-w-[1.5rem] p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"
-                                    />
-                                    <span className="text nav-text">
-                                        API Docs
-                                    </span>
-                                </Link>
-                            </li>
-                            <li className="nav-link">
-                                <Link
-                                    to="/users/api_cred"
-                                    className="space-x-4"
-                                >
-                                    <FontAwesomeIcon
-                                        icon={faHouse}
-                                        className="iconHero flex min-w-[1.5rem] p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"
-                                    />
-                                    <span className="text nav-text">
-                                        API Credentials
-                                    </span>
-                                </Link>
-                            </li>
-                            <hr />
-                            <li className="nav-link">
-                                <Link to="/" className="space-x-4">
-                                    <FontAwesomeIcon
-                                        icon={faHouse}
-                                        className="iconHero flex min-w-[1.5rem] p-2 rounded-full text-[1rem] leading-[1.40625rem] justify-center items-center bg-[#f1f3f5]"
-                                    />
-                                    <span className="text nav-text">
-                                        Settings
-                                    </span>
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
+                <div className="menu-items ">
+                    <ul className="nav-links space-y-5">
+                        <li>
+                            <Link to="/users/dashboard">
+                                <i>
+                                    <Unicons.UilEstate />
+                                </i>
+                                <span className="link-name">Dahsboard</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/users/try_service">
+                                <i>
+                                    <Unicons.UilEstate />
+                                </i>
+                                <span className="link-name">Try Service</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/users/op_status">
+                                <i>
+                                    <Unicons.UilEstate />
+                                </i>
+                                <span className="link-name">
+                                    Opretor Status
+                                </span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/users/plan">
+                                <i>
+                                    <Unicons.UilEstate />
+                                </i>
+                                <span className="link-name">Buy Plan</span>
+                            </Link>
+                        </li>
+                        <hr />
+                        <li>
+                            <Link to="/users/purchase_report">
+                                <i>
+                                    <Unicons.UilEstate />
+                                </i>
+                                <span className="link-name">
+                                    Purchase Report
+                                </span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/users/api_docs">
+                                <i>
+                                    <Unicons.UilEstate />
+                                </i>
+                                <span className="link-name">API Docs</span>
+                            </Link>
+                        </li>
+                        <hr />
+                        <li>
+                            <Link to="/users/api_cred">
+                                <i>
+                                    <Unicons.UilEstate />
+                                </i>
+                                <span className="link-name">
+                                    API Credentials
+                                </span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/">
+                                <i>
+                                    <Unicons.UilEstate />
+                                </i>
+                                <span className="link-name">Settings</span>
+                            </Link>
+                        </li>
+                    </ul>
                 </div>
             </nav>
+
+            <section className="dashboard">
+                <div className="top">
+                    <div className="sidebar-toggle flex items-center space-x-3">
+                        <i onClick={c}>
+                            <Unicons.UilBars />
+                        </i>
+                        <h1 className="hidden lg:inline-block text-base">
+                            {lastIndex}
+                        </h1>
+                    </div>
+                    <div>
+                        <div className="two_icon flex text-icon_color text-2xl lg:space-x-5">
+                            <div className="collaps_icon hidden lg:inline-block">
+                                <Unicons.UilExpandArrows onClick={fullScreen} />
+                            </div>
+                            <div
+                                className="user_icon text-icon_color flex items-center gap-2 md:mr-6 cursor-pointer"
+                                onClick={userProfile}
+                            >
+                                <img
+                                    src="/images/user.png"
+                                    alt=""
+                                    className="w-8 h-8"
+                                />
+                                <p className="text-lg">anand</p>
+                                <Unicons.UilAngleDown />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="dash-content">{props.children}</div>
+            </section>
         </section>
     );
 }

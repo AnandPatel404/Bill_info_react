@@ -220,122 +220,122 @@ function App() {
                     </Route>
                     {/* user's routes start */}
                     <Route exact path="/users/dashboard">
-                        <HorizontalnavBar />
-                        {/* <VarticalNavbar /> */}
-                        <DasbordContennt />
-                        <User_Footer />
+                        <VarticalNavbar>
+                            <DasbordContennt />
+                            <User_Footer />
+                        </VarticalNavbar>
                     </Route>
                     <Route exact path="/users/try_service">
-                        <HorizontalnavBar />
-                        <VarticalNavbar />
-                        <Try_Service />
-                        <User_Footer />
+                        <VarticalNavbar>
+                            <Try_Service />
+                            <User_Footer />
+                        </VarticalNavbar>
                     </Route>
                     <Route exact path="/users/op_status">
-                        <HorizontalnavBar />
-                        <VarticalNavbar />
-                        <Container>
-                            <Card>
-                                <Operator_Status />
-                            </Card>
-                        </Container>
+                        <VarticalNavbar>
+                            <Container>
+                                <Card>
+                                    <Operator_Status />
+                                </Card>
+                            </Container>
+                        </VarticalNavbar>
                         <User_Footer />
                     </Route>
                     <Route exact path="/users/plan">
-                        <HorizontalnavBar />
-                        <VarticalNavbar />
-                        <Container>
-                            <Card>
-                                <Plan />
-                                <PlanDetils
-                                    name="Starter+"
-                                    req="4,000"
-                                    price="6599"
-                                />
-                                <PlanDetils
-                                    name="Basic+"
-                                    req="7,000"
-                                    price="8799"
-                                />
-                                <PlanDetils
-                                    name="Pro+"
-                                    req="10,000"
-                                    price="11999"
-                                />
-                            </Card>
-                        </Container>
+                        <VarticalNavbar>
+                            <Container>
+                                <Card>
+                                    <Plan />
+                                    <PlanDetils
+                                        name="Starter+"
+                                        req="4,000"
+                                        price="6599"
+                                    />
+                                    <PlanDetils
+                                        name="Basic+"
+                                        req="7,000"
+                                        price="8799"
+                                    />
+                                    <PlanDetils
+                                        name="Pro+"
+                                        req="10,000"
+                                        price="11999"
+                                    />
+                                </Card>
+                            </Container>
+                        </VarticalNavbar>
                         <User_Footer />
                     </Route>
                     <Route exact path="/users/purchase_report">
-                        <HorizontalnavBar />
-                        <VarticalNavbar />
-                        <Container>
-                            <Card>
-                                <Purchase_Report />
-                            </Card>
-                        </Container>
+                        <VarticalNavbar>
+                            <Container>
+                                <Card>
+                                    <Purchase_Report />
+                                </Card>
+                            </Container>
+                        </VarticalNavbar>
                         <User_Footer />
                     </Route>
                     <Route exact path="/users/api_docs">
-                        <HorizontalnavBar />
-                        <VarticalNavbar />
-                        <Container>
-                            <Api_docs />
-                            <Card>
-                                <Api_docs_info />
-                            </Card>
-                            <Api_docs />
-                            <Card>
-                                np
-                                <Api_docs_info />
-                            </Card>
-                        </Container>
+                        <VarticalNavbar>
+                            <Container>
+                                <Api_docs />
+                                <Card>
+                                    <Api_docs_info />
+                                </Card>
+                                <Api_docs />
+                                <Card>
+                                    np
+                                    <Api_docs_info />
+                                </Card>
+                            </Container>
+                        </VarticalNavbar>
                         <User_Footer />
                     </Route>
                     <Route exact path="/users/api_cred">
-                        <HorizontalnavBar />
-                        <VarticalNavbar />
-                        <Container>
-                            <Api_cred />
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-                                <Card>
-                                    <Api_cred_info
-                                        name="APi Token"
-                                        des="You can use below form to add new coupons and access via secured Rest API"
-                                        inputName="APi Token"
-                                        buttonName="Re-Generate"
-                                    />
-                                </Card>
-                                <Card>
-                                    <Api_cred_info
-                                        name="IP Address"
-                                        des="You can use below form to add new coupons and access via secured Rest API"
-                                        inputName="IP Address"
-                                        buttonName="Update"
-                                    />
-                                </Card>
-                            </div>
-                        </Container>
+                        <VarticalNavbar>
+                            <Container>
+                                <Api_cred />
+                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                                    <Card>
+                                        <Api_cred_info
+                                            name="APi Token"
+                                            des="You can use below form to add new coupons and access via secured Rest API"
+                                            inputName="APi Token"
+                                            buttonName="Re-Generate"
+                                        />
+                                    </Card>
+                                    <Card>
+                                        <Api_cred_info
+                                            name="IP Address"
+                                            des="You can use below form to add new coupons and access via secured Rest API"
+                                            inputName="IP Address"
+                                            buttonName="Update"
+                                        />
+                                    </Card>
+                                </div>
+                            </Container>
+                        </VarticalNavbar>
                         <User_Footer />
                     </Route>
                     <Route exact path="/users/profile">
-                        <HorizontalnavBar />
-                        <VarticalNavbar />
-                        <Container>
-                            <Card>
-                                <Profile />
-                            </Card>
-                        </Container>
+                        <VarticalNavbar>
+                            <Container>
+                                <Card>
+                                    <Profile />
+                                </Card>
+                            </Container>
+                        </VarticalNavbar>
                         <User_Footer />
                     </Route>
                     <Route exact path="/users/change_password">
-                        <HorizontalnavBar />
-                        <VarticalNavbar />
-                        <Container>
-                            <Card>
-                                <Change_password />
-                            </Card>
-                        </Container>
+                        <VarticalNavbar>
+                            <Container>
+                                <Card>
+                                    <Change_password />
+                                </Card>
+                            </Container>
+                        </VarticalNavbar>
                         <User_Footer />
                     </Route>
                 </Suspense>

@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useEffect } from "react";
 import Container from "../../../Helper/Container";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
@@ -34,10 +34,20 @@ function Try_services() {
             },
         },
     };
-
+    useEffect(() => {
+        document.querySelectorAll(".item").forEach((item) => {
+            item.addEventListener("click", (e) => {
+                e.preventDefault();
+                document.querySelectorAll(".item").forEach((item) => {
+                    item.classList.remove("active-border");
+                });
+                item.classList.add("active-border");
+            });
+        });
+    });
     return (
         <section className="bg-[#f6f9fc]">
-            <Container className="container pt-20 md:ml-9 overflow-x-hidden">
+            <Container className="pt-20 overflow-x-hidden">
                 <OwlCarousel className="slider-items owl-carousel" {...options}>
                     {/* {data.map((item) => {
                         <div className="item px-px" key={item.id}>
