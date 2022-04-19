@@ -30,8 +30,8 @@ function Navbar_User(props) {
         <section>
             <nav className={`${count ? " close" : ""}`}>
                 <div className="logo-name text-primary_dark">
-                    <span className="logo_name font-semibold text-[1.4rem]">
-                        Billinfo
+                    <span className="logo_name font-semibold text-[1.4rem] cursor-pointer">
+                        <Link to="/users/dashboard">Billinfo</Link>
                     </span>
                 </div>
 

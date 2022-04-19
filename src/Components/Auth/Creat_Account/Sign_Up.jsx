@@ -1,148 +1,156 @@
+import { useGetUserMutation } from "../../../Redux/Api/User_SIgn";
 import { React, useState, useRef } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import swal from "sweetalert";
 function Sign_Up() {
-    const History = useHistory();
-    // const [forShow, setForShow] = useState(false);
+    const [Name, setName] = useState("");
+    const [userName, setUsername] = useState("");
+    const [Email, setEmail] = useState("");
+    const [Referral, setReferral] = useState("");
+    const forName = (e) => {
+        setName(e.target.value);
+    };
+    const forUserName = (e) => {
+        setUsername(e.target.value);
+    };
+    const forUserEmail = (e) => {
+        setEmail(e.target.value);
+    };
+    const forReferral = (e) => {
+        setReferral(e.target.value);
+    };
+    const [forShow, setForShow] = useState(false);
     const [otps, setOtp] = useState(false);
     const [forPasswords, setForPasswords] = useState(false);
-    const name = useRef(null);
-    const email = useRef(null);
-    const username = useRef(null);
-    const referral_code = useRef(null);
-    const otp_code = useRef(null);
-    const password = useRef(null);
-    const conformPassword = useRef(null);
+    // const name = useRef(null);
+    // const email = useRef(null);
+    // const username = useRef(null);
+    // const referral_code = useRef(null);
+    // const otp_code = useRef(null);
+    // const password = useRef(null);
+    // const conformPassword = useRef(null);
     // const has = useRef(null);
-    const sendData = async (e) => {
+
+    // const otpdataSubmit = async (e) => {
+    //     e.preventDefault();
+
+    //     try {
+    //         if (otp_code.current.value == "") {
+    //             swal("Oops!", "Please fill all the fields", "error");
+    //         }
+    //         await fetch("http://localhost:8000/auth/otp_verify", {
+    //             method: "post",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //             body: JSON.stringify({
+    //                 otp: otp_code.current.value,
+    //                 username: username.current.value,
+    //             }),
+    //         })
+    //             .then((res) => res.json())
+    //             .then((data) => {
+    //                 console.log(data);
+    //                 if (data.status === "success") {
+    //                     swal(
+    //                         "Success",
+    //                         "You have successfully signed up",
+    //                         "success"
+    //                     );
+    //                     setForPasswords(false);
+    //                     window.localStorage.setItem("hash", data.hash);
+    //                 } else {
+    //                     swal("Error", "Something went wrong", "error");
+    //                 }
+    //             })
+    //             .catch((err) => {
+    //                 console.log(err);
+    //             });
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // };
+
+    // // finel setp
+
+    // const finelSubmit = async (e) => {
+    //     e.preventDefault();
+    //     try {
+    //         await fetch("http://localhost:8000/auth/register_set_password", {
+    //             method: "post",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //             body: JSON.stringify({
+    //                 name: name.current.value,
+    //                 username: username.current.value,
+    //                 email: email.current.value,
+    //                 referral_code: referral_code.current.value,
+    //                 password: password.current.value,
+    //                 confirm_password: conformPassword.current.value,
+    //                 hash: window.localStorage.getItem("hash"),
+    //             }),
+    //         })
+    //             .then((res) => res.json())
+    //             .then((res) => {
+    //                 if (res.status == "success") {
+    //                     swal(
+    //                         "Success",
+    //                         "You have successfully signed up",
+    //                         "success"
+    //                     );
+    //                     window.localStorage.removeItem("hash");
+    //                     History.push("/auth/login");
+    //                 } else {
+    //                     swal({
+    //                         title: res.title,
+    //                         text: res.msg,
+    //                         icon: res.status,
+    //                     });
+    //                 }
+    //             });
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // };
+    const [creatUser, response] = useGetUserMutation();
+    const userdata = {
+        name: Name,
+        username: userName,
+        email: Email,
+        referral_code: Referral,
+    };
+    console.log(response);
+    // console.log(userdata);
+    const submit = async (e) => {
         e.preventDefault();
         try {
-            if (
-                name.current.value === "" ||
-                email.current.value === "" ||
-                username.current.value === ""
-            ) {
+            if (Name == "" || Email == "" || userName == "") {
                 swal("Oops!", "Please fill all the fields", "error");
             }
-            await fetch("http://localhost:8000/auth/send_otp", {
-                method: "post",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    name: name.current.value,
-                    username: username.current.value,
-                    email: email.current.value,
-                    referral_code: referral_code.current.value,
-                }),
-            })
-                .then((res) => res.json())
-                .then((data) => {
-                    console.log(data);
-                    if (data.status === "success") {
-                        swal(
-                            "Success",
-                            "You have successfully signed up",
-                            "success"
-                        );
-                        setOtp(true);
-                        setForPasswords(true);
-                    } else {
-                        swal("Error", "Something went wrong", "error");
-                    }
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
+            await creatUser(userdata).then((response) => {
+                if (response.data.status === "success") {
+                    swal(
+                        "Success",
+                        "You have successfully signed up",
+                        "success"
+                    );
+                    setOtp(true);
+                    setForPasswords(true);
+                } else {
+                    swal({
+                        title: response.data.title,
+                        text: response.data.msg,
+                        icon: response.data.status,
+                    });
+                }
+            });
         } catch (err) {
             console.log(err);
         }
     };
 
-    console.log(username);
-    const otpdataSubmit = async (e) => {
-        e.preventDefault();
-
-        try {
-            if (otp_code.current.value == "") {
-                swal("Oops!", "Please fill all the fields", "error");
-            }
-            await fetch("http://localhost:8000/auth/otp_verify", {
-                method: "post",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    otp: otp_code.current.value,
-                    username: username.current.value,
-                }),
-            })
-                .then((res) => res.json())
-                .then((data) => {
-                    console.log(data);
-                    if (data.status === "success") {
-                        swal(
-                            "Success",
-                            "You have successfully signed up",
-                            "success"
-                        );
-                        setForPasswords(false);
-                        window.localStorage.setItem("hash", data.hash);
-                    } else {
-                        swal("Error", "Something went wrong", "error");
-                    }
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        } catch (err) {
-            console.log(err);
-        }
-    };
-
-    // finel setp
-
-    const finelSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            await fetch("http://localhost:8000/auth/register_set_password", {
-                method: "post",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    name: name.current.value,
-                    username: username.current.value,
-                    email: email.current.value,
-                    referral_code: referral_code.current.value,
-                    password: password.current.value,
-                    confirm_password: conformPassword.current.value,
-                    hash: window.localStorage.getItem("hash"),
-                }),
-            })
-                .then((res) => res.json())
-                .then((res) => {
-                    if (res.status == "success") {
-                        swal(
-                            "Success",
-                            "You have successfully signed up",
-                            "success"
-                        );
-                        window.localStorage.removeItem("hash");
-                        History.push("/auth/login");
-                    } else {
-                        swal({
-                            title: res.title,
-                            text: res.msg,
-                            icon: res.status,
-                        });
-                    }
-                });
-        } catch (err) {
-            console.log(err);
-        }
-    };
     return (
         <section>
             <section
@@ -179,7 +187,8 @@ function Sign_Up() {
                                     id="name"
                                     className="py-3 rounded border border-gray-300"
                                     placeholder="   Enter your name"
-                                    ref={name}
+                                    // ref={name}
+                                    onChange={forName}
                                 />
                             </div>
                             <div className="flex mb-4 flex-col">
@@ -196,7 +205,8 @@ function Sign_Up() {
                                     className="py-3 rounded border border-gray-300"
                                     maxLength="10"
                                     placeholder="   Enter your mobile no."
-                                    ref={username}
+                                    // ref={username}
+                                    onChange={forUserName}
                                 />
                             </div>
                             <div className="flex mb-4 flex-col">
@@ -212,7 +222,8 @@ function Sign_Up() {
                                     id="email"
                                     className="py-3 rounded border border-gray-300"
                                     placeholder="   Enter your email id"
-                                    ref={email}
+                                    onChange={forUserEmail}
+                                    // ref={email}
                                 />
                             </div>
                             <div className="flex mb-4 flex-col">
@@ -229,7 +240,8 @@ function Sign_Up() {
                                     className="py-3 rounded border border-gray-300"
                                     maxLength="10"
                                     placeholder="   Enter referral code (optional)"
-                                    ref={referral_code}
+                                    // ref={referral_code}
+                                    onChange={forReferral}
                                 />
                             </div>
                             <div className="flex justify-between items-center flex-row">
@@ -241,7 +253,7 @@ function Sign_Up() {
                                 </Link>
                                 <button
                                     type="submit"
-                                    onClick={sendData}
+                                    onClick={submit}
                                     className="register_detail_btn px-6 py-4 bg-primary text-white font-medium rounded whitespace-nowrap"
                                 >
                                     Sign up as a business
@@ -290,7 +302,7 @@ function Sign_Up() {
                                     minLength="6"
                                     maxLength="6"
                                     placeholder="   Enter your otp"
-                                    ref={otp_code}
+                                    // ref={otp_code}
                                 />
                             </div>
                             <div className="flex flex-row justify-between items-center">
@@ -302,7 +314,7 @@ function Sign_Up() {
                                 </Link>
                                 <button
                                     type="submit"
-                                    onClick={otpdataSubmit}
+                                    // onClick={otpdataSubmit}
                                     className="verify_otp_btn px-6 py-4 bg-primary text-white font-medium rounded"
                                 >
                                     Submit
@@ -355,7 +367,7 @@ function Sign_Up() {
                                     className="py-3 rounded border border-gray-300 placeholder-gray-400"
                                     name="password"
                                     id="password"
-                                    ref={password}
+                                    // ref={password}
                                     placeholder="   Enter your password"
                                 />
                             </div>
@@ -371,7 +383,7 @@ function Sign_Up() {
                                     className="py-3 rounded border border-gray-300 placeholder-gray-400"
                                     name="confirm_password"
                                     id="confirm_password"
-                                    ref={conformPassword}
+                                    // ref={conformPassword}
                                     placeholder="   Enter Confirm Password"
                                 />
                             </div>
@@ -381,7 +393,7 @@ function Sign_Up() {
                                 </Link>
                                 <button
                                     type="submit"
-                                    onClick={finelSubmit}
+                                    // onClick={finelSubmit}
                                     className="px-6 py-4 bg-primary text-white font-medium rounded  register_set_password_btn"
                                 >
                                     Submit
