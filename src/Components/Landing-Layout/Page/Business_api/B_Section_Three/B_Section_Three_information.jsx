@@ -4,12 +4,12 @@ function B_Section_Three_information() {
     return (
         <section className="text-gray-900 body-font bg-double-liteblue">
             <div className="max-w-screen-xl py-24 mx-auto overflow-x-hidden px-4 flex justify-center sm:px-8 md:px-5 lg:px-24">
-                <div className="flex text-left sm:text-center flex-col lg:flex-row justify-center items-start relative w-full">
+                <div className="flex md:text-left sm:text-center flex-col lg:flex-row justify-center items-start relative w-full">
                     <div className="flex-row lg:flex hidden absolute w-1/2 top-16 justify-between">
                         <div className="flex w-2/5 h-px bg-gray-200"></div>
                         <div className="flex w-2/5 h-px bg-gray-200"></div>
                     </div>
-                    <div className="lg:p-4 w-full lg:w-1/3 flex flex-row lg:flex-col lg:justify-center lg:items-center">
+                    <div className="lg:p-4 w-full lg:w-1/3 flex flex-col  justify-center items-center">
                         <div className="p-6 mb-5 z-10">
                             <svg
                                 width="64"
@@ -34,7 +34,7 @@ function B_Section_Three_information() {
                             </svg>
                         </div>
                         <div className="flex mx-2 flex-col lg:items-center">
-                            <div className="mb-3 font-medium text-left text-xl">
+                            <div className="mb-3 font-medium text-center lg:text-left text-xl">
                                 Create
                             </div>
                             <div className="text-gray-600 font-normal text-center text-base">
@@ -43,7 +43,7 @@ function B_Section_Three_information() {
                             </div>
                         </div>
                     </div>
-                    <div className="lg:p-4 w-full lg:w-1/3 flex flex-row lg:flex-col lg:justify-center lg:items-center">
+                    <div className="lg:p-4 w-full lg:w-1/3 flex flex-col justify-center items-center">
                         <div className="p-6 mb-5 z-10">
                             <svg
                                 width="64"
@@ -90,7 +90,7 @@ function B_Section_Three_information() {
                             </svg>
                         </div>
                         <div className="flex mx-2 flex-col lg:items-center">
-                            <div className="mb-3 text-left text-xl font-medium">
+                            <div className="mb-3 text-center lg:text-left text-xl font-medium">
                                 Integrate
                             </div>
                             <div className="text-gray-600 text-center text-base font-normal">
@@ -98,7 +98,7 @@ function B_Section_Three_information() {
                             </div>
                         </div>
                     </div>
-                    <div className="lg:p-4 w-full lg:w-1/3 flex flex-row lg:flex-col lg:justify-center lg:items-center">
+                    <div className="lg:p-4 w-full lg:w-1/3 flex flex-col justify-center items-center">
                         <div className="p-6 mb-5 z-10 ml-2">
                             <svg
                                 width="64"
@@ -157,7 +157,7 @@ function B_Section_Three_information() {
                             </svg>
                         </div>
                         <div className="flex mx-2 flex-col lg:items-center">
-                            <div className="mb-3 font-medium text-left text-xl">
+                            <div className="mb-3 font-medium text-center lg:text-left text-xl">
                                 Woohoo!
                             </div>
                             <div className="text-center text-base  font-normal text-gray-600">

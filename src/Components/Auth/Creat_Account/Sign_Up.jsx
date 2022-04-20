@@ -160,10 +160,10 @@ function Sign_Up() {
                     </div>
                 </div>
                 <div
-                    className="flex py-6 px-6 md:max-w-md lg:max-w-full md:mx-auto w-1/3 rounded items-center justify-center bg-white"
+                    className="flex py-6 px-6 rounded items-center justify-center bg-white"
                     style={{ boxShadow: "0 1px 46px -4px rgb(0 0 0 / 28%)" }}
                 >
-                    <div className="w-full h-full flex flex-col">
+                    <div className=" flex flex-col">
                         <form
                             action=""
                             className="w-full mx-auto"
@@ -294,7 +294,6 @@ function Sign_Up() {
                                     maxLength="6"
                                     placeholder="   Enter your otp"
                                     onChange={otpvalue}
-                                    // ref={otp_code}
                                 />
                             </div>
                             <div className="flex flex-row justify-between items-center">

@@ -35,7 +35,7 @@ function Log_In() {
                 </div>
             </div>
             <div
-                className="flex items-center justify-center bg-white py-6 px-6 md:max-w-md lg:max-w-full md:mx-auto w-1/3 rounded"
+                className="flex items-center justify-center bg-white py-6 px-6 md:max-w-md lg:max-w-full md:mx-auto md:w-1/3 rounded"
                 style={{ boxShadow: "0 1px 46px -4px rgb(0 0 0 / 28%)" }}
             >
                 <div className="w-full h-full flex flex-col">

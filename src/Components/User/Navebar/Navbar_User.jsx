@@ -7,9 +7,6 @@ function Navbar_User(props) {
     const c = () => {
         setCount(!count);
     };
-    const close = () => {
-        setCount(!count);
-    };
 
     const [isOpen, setIsOpen] = useState(false);
     let { path, url } = useRouteMatch();
@@ -45,18 +42,18 @@ function Navbar_User(props) {
                                 <span className="link-name">Dahsboard</span>
                             </Link>
                         </li>
-                        <li>
+                        {/* <li>
                             <Link to="/users/try_service">
                                 <i>
-                                    <Unicons.UilEstate />
+                                    <Unicons.UilAnalysis />
                                 </i>
                                 <span className="link-name">Try Service</span>
                             </Link>
-                        </li>
+                        </li> */}
                         <li>
                             <Link to="/users/op_status">
                                 <i>
-                                    <Unicons.UilEstate />
+                                    <Unicons.UilAnalysis />
                                 </i>
                                 <span className="link-name">
                                     Opretor Status
@@ -64,37 +61,60 @@ function Navbar_User(props) {
                             </Link>
                         </li>
                         <li>
+                            <hr />
+                        </li>
+                        {/* TODO : this is gst billing */}
+                        <li>
+                            <Link to="/users/op_status">
+                                <i>
+                                    <Unicons.UilBriefcase />
+                                </i>
+                                <span className="link-name">
+                                    Gst Billing Details
+                                </span>
+                            </Link>
+                        </li>
+                        <li>
                             <Link to="/users/plan">
                                 <i>
-                                    <Unicons.UilEstate />
+                                    <Unicons.UilShoppingBag />
                                 </i>
                                 <span className="link-name">Buy Plan</span>
                             </Link>
                         </li>
-                        <hr />
                         <li>
                             <Link to="/users/purchase_report">
                                 <i>
-                                    <Unicons.UilEstate />
+                                    <Unicons.UilNotes />
                                 </i>
                                 <span className="link-name">
                                     Purchase Report
                                 </span>
                             </Link>
                         </li>
+                        <hr />
+                        {/* TODO : this is invoice */}
                         <li>
-                            <Link to="/users/api_docs">
+                            <Link to="/users/purchase_report">
                                 <i>
-                                    <Unicons.UilEstate />
+                                    <Unicons.UilNotes />
                                 </i>
-                                <span className="link-name">API Docs</span>
+                                <span className="link-name">invoices</span>
                             </Link>
                         </li>
                         <hr />
                         <li>
+                            <Link to="/users/api_docs">
+                                <i>
+                                    <Unicons.UilReceipt />
+                                </i>
+                                <span className="link-name">API Docs</span>
+                            </Link>
+                        </li>
+                        <li>
                             <Link to="/users/api_cred">
                                 <i>
-                                    <Unicons.UilEstate />
+                                    <Unicons.UilBracketsCurly />
                                 </i>
                                 <span className="link-name">
                                     API Credentials
@@ -102,9 +122,10 @@ function Navbar_User(props) {
                             </Link>
                         </li>
                         <li>
+                            <hr />
                             <Link to="/">
                                 <i>
-                                    <Unicons.UilEstate />
+                                    <Unicons.UilLockAlt />
                                 </i>
                                 <span className="link-name">Settings</span>
                             </Link>
@@ -115,7 +136,7 @@ function Navbar_User(props) {
 
             <section className="dashboard">
                 <div className="top">
-                    <div className="sidebar-toggle flex items-center space-x-3">
+                    <div className="py-3 sidebar-toggle flex items-center space-x-3">
                         <i onClick={c}>
                             <Unicons.UilBars />
                         </i>
@@ -124,8 +145,8 @@ function Navbar_User(props) {
                         </h1>
                     </div>
                     <div>
-                        <div className="two_icon flex text-icon_color text-2xl lg:space-x-5">
-                            <div className="collaps_icon hidden lg:inline-block">
+                        <div className="two_icon flex text-icon_color text-2xl lg:space-x-3">
+                            <div className="collaps_icon hidden lg:inline-block items-center mt-1">
                                 <Unicons.UilExpandArrows onClick={fullScreen} />
                             </div>
                             <div
@@ -135,9 +156,9 @@ function Navbar_User(props) {
                                 <img
                                     src="/images/user.png"
                                     alt=""
-                                    className="w-8 h-8"
+                                    className="w-9 h-9 p-1"
                                 />
-                                <p className="text-lg">anand</p>
+                                <p className="text-lg text-center">anand</p>
                                 <Unicons.UilAngleDown />
                             </div>
                         </div>

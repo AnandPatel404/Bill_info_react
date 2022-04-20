@@ -2,8 +2,8 @@ import React from "react";
 
 function B_Section_Two_Information() {
     return (
-        <section className="text-gray-700 max-w-screen-xl items-center mx-auto pt-20 pb-20 px-24">
-            <div className="flex mb-12 text-center">
+        <section className="text-gray-700 max-w-screen-xl items-center mx-auto pt-20 pb-20 lg:px-24">
+            <div className="flex mb-12 text-center flex-col md:flex-row">
                 <div className="w-full lg:w-1/4 mx-auto">
                     <div className="p-6 mx-auto">
                         <div className="inline-flex items-center justify-center flex-shrink-0 w-12 h-12 mb-5 ml-auto text-black rounded-full bg-gray-50">

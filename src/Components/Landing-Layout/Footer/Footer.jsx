@@ -4,7 +4,7 @@ function Footer() {
     return (
         <footer className="text-gray-700 transition.duration-500 ease-in-out transform bg-white">
             <div className="max-w-screen-xl flex flex-col flex-wrap mx-auto md:items-center lg:items-start lg:flex-row md:flex-no-wrap py-20 px-4 sm:px-8 md:px-4 xl:px-0">
-                <div className="flex flex-col w-64 mx-auto text-center md:mx-0 md:text-left">
+                <div className="flex  flex-col items-center md:items-start md:w-64  mx-auto text-center md:mx-0 md:text-left">
                     <Link
                         to="/"
                         className="text-xl font-semibold tracking-widest text-primary rounded-lg focus:outline-none focus:shadow-outline"

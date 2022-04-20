@@ -8,7 +8,7 @@ function B_Section_Three_Heading() {
                 id="services"
             >
                 <div className="flex flex-col justify-center pt-20 sm:pt-24 md:pt-20 items-center">
-                    <div className="mb-8 font-medium text-center text-3xl">
+                    <div className="mb-8 font-medium text-center text-2xl md:text-3xl">
                         Using our API is as easy as 1,2,3
                     </div>
                     <div className="text-gray-600 tracking-wide font-normal leading-none text-center text-base">

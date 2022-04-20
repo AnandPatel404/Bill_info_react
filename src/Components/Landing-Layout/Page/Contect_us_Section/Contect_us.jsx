@@ -3,8 +3,8 @@ import React from "react";
 function Contect_us() {
     return (
         <section className="text-gray-900 border-b">
-            <div className="pt-16 pb-16 md:flex-row px-4 sm:px-8 md:px-4 xl:px-0 max-w-screen-lg mx-auto items-center flex-col flex">
-                <div className="flex flex-col w-full pt-0 mb-16 text-left lg:flex-grow md:w-1/2 md:items-start md:mb-0">
+            <div className="pt-8 lg:pt-16 pb-16 md:flex-row px-4 sm:px-8 md:px-4 xl:px-0 max-w-screen-lg mx-auto items-center flex-col flex">
+                <div className="flex flex-col w-full pt-0 mb-16 text-left lg:flex-grow md:w-1/2 md:items-start md:mb-0 order-last lg:order-first">
                     <div className="mb-8 flex-col flex">
                         <div className="mb-4 font-medium leading-none  text-3xl">
                             We're here to help
@@ -13,7 +13,7 @@ function Contect_us() {
                             Have any questions? We'd love to hear from you.
                         </div>
                     </div>
-                    <div className="w-3/4 flex-col flex">
+                    <div className="md:w-3/4 flex-col flex ">
                         <form action="" className="grid grid-cols-2 gap-4">
                             <div className="col-span-2">
                                 <div className="flex flex-col">
@@ -25,7 +25,7 @@ function Contect_us() {
                                     </label>
                                     <input
                                         type="text"
-                                        className="py-5 rounded border border-gray-300 placeholder-gray-400"
+                                        className="py-3 md:py-5 rounded border border-gray-300 placeholder-gray-400"
                                         id="mobile_no"
                                         placeholder="   Enter your name"
                                     />
@@ -41,7 +41,7 @@ function Contect_us() {
                                     </label>
                                     <input
                                         type="number"
-                                        className="py-5 rounded border border-gray-300 placeholder-gray-400"
+                                        className="py-3 md:py-5 rounded border border-gray-300 placeholder-gray-400"
                                         id="mobile_no"
                                         placeholder="   Enter your mobile no."
                                     />
@@ -57,7 +57,7 @@ function Contect_us() {
                                     </label>
                                     <input
                                         type="email"
-                                        className="py-5 rounded border border-gray-300 placeholder-gray-400"
+                                        className="py-3 md:py-5 rounded border border-gray-300 placeholder-gray-400"
                                         id="email"
                                         placeholder="   Enter your email address"
                                     />
@@ -73,7 +73,7 @@ function Contect_us() {
                                     </label>
                                     <input
                                         type="text"
-                                        className="py-5 rounded border border-gray-300 placeholder-gray-400"
+                                        className="py-3 md:py-5 rounded border border-gray-300 placeholder-gray-400"
                                         id="mobile_no"
                                         placeholder="   Enter your message"
                                     />
@@ -83,7 +83,7 @@ function Contect_us() {
                                 <div className="flex items-end h-full pt-2 ">
                                     <button
                                         type="submit"
-                                        className="mt-auto px-4 py-5 bg-primary_dark border border-primary_dark text-white font-medium rounded modal-open"
+                                        className="mt-auto px-4 py-2 md:py-3 bg-primary_dark border border-primary_dark text-white font-medium rounded modal-open"
                                         data-toggle="modal"
                                         data-target="prepaidPlan"
                                     >
@@ -94,7 +94,7 @@ function Contect_us() {
                         </form>
                     </div>
                 </div>
-                <div className="w-1/2 flex justify-end">
+                <div className="mb-12 md:mb-0 md:w-1/2 flex justify-end">
                     <img
                         src="/images/svg/contact_us_img.svg"
                         alt=""

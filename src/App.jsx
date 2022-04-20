@@ -220,7 +220,9 @@ function App() {
                     {/* user's routes start */}
                     <Route exact path="/users/dashboard">
                         <VarticalNavbar>
-                            <DasbordContennt />
+                            <Container>
+                                <DasbordContennt />
+                            </Container>
                             <User_Footer />
                         </VarticalNavbar>
                     </Route>
