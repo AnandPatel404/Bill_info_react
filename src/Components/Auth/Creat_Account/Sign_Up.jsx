@@ -1,13 +1,23 @@
-import { useGetUserMutation } from "../../../Redux/Api/User_SIgn";
+import {
+    useGetUserMutation,
+    useVerifyUserMutation,
+    useUserPasswordMutation,
+} from "../../../Redux/Api/User_SIgn";
 import { React, useState, useRef } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import { Link, useHistory } from "react-router-dom";
 import swal from "sweetalert";
 function Sign_Up() {
+    const History = useHistory();
+    const [otps, setOtp] = useState(false);
+    const [forPasswords, setForPasswords] = useState(false);
+
     const [Name, setName] = useState("");
     const [userName, setUsername] = useState("");
     const [Email, setEmail] = useState("");
     const [Referral, setReferral] = useState("");
+    const [forotp, setForOtp] = useState("");
+    const [userPassword, setUserPassword] = useState("");
+    const [conformPassword, setConformPassword] = useState("");
     const forName = (e) => {
         setName(e.target.value);
     };
@@ -20,100 +30,15 @@ function Sign_Up() {
     const forReferral = (e) => {
         setReferral(e.target.value);
     };
-    const [forShow, setForShow] = useState(false);
-    const [otps, setOtp] = useState(false);
-    const [forPasswords, setForPasswords] = useState(false);
-    // const name = useRef(null);
-    // const email = useRef(null);
-    // const username = useRef(null);
-    // const referral_code = useRef(null);
-    // const otp_code = useRef(null);
-    // const password = useRef(null);
-    // const conformPassword = useRef(null);
-    // const has = useRef(null);
-
-    // const otpdataSubmit = async (e) => {
-    //     e.preventDefault();
-
-    //     try {
-    //         if (otp_code.current.value == "") {
-    //             swal("Oops!", "Please fill all the fields", "error");
-    //         }
-    //         await fetch("http://localhost:8000/auth/otp_verify", {
-    //             method: "post",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //             },
-    //             body: JSON.stringify({
-    //                 otp: otp_code.current.value,
-    //                 username: username.current.value,
-    //             }),
-    //         })
-    //             .then((res) => res.json())
-    //             .then((data) => {
-    //                 console.log(data);
-    //                 if (data.status === "success") {
-    //                     swal(
-    //                         "Success",
-    //                         "You have successfully signed up",
-    //                         "success"
-    //                     );
-    //                     setForPasswords(false);
-    //                     window.localStorage.setItem("hash", data.hash);
-    //                 } else {
-    //                     swal("Error", "Something went wrong", "error");
-    //                 }
-    //             })
-    //             .catch((err) => {
-    //                 console.log(err);
-    //             });
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // };
-
-    // // finel setp
-
-    // const finelSubmit = async (e) => {
-    //     e.preventDefault();
-    //     try {
-    //         await fetch("http://localhost:8000/auth/register_set_password", {
-    //             method: "post",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //             },
-    //             body: JSON.stringify({
-    //                 name: name.current.value,
-    //                 username: username.current.value,
-    //                 email: email.current.value,
-    //                 referral_code: referral_code.current.value,
-    //                 password: password.current.value,
-    //                 confirm_password: conformPassword.current.value,
-    //                 hash: window.localStorage.getItem("hash"),
-    //             }),
-    //         })
-    //             .then((res) => res.json())
-    //             .then((res) => {
-    //                 if (res.status == "success") {
-    //                     swal(
-    //                         "Success",
-    //                         "You have successfully signed up",
-    //                         "success"
-    //                     );
-    //                     window.localStorage.removeItem("hash");
-    //                     History.push("/auth/login");
-    //                 } else {
-    //                     swal({
-    //                         title: res.title,
-    //                         text: res.msg,
-    //                         icon: res.status,
-    //                     });
-    //                 }
-    //             });
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // };
+    const otpvalue = (e) => {
+        setForOtp(e.target.value);
+    };
+    const forPassword = (e) => {
+        setUserPassword(e.target.value);
+    };
+    const forConfirmPassword = (e) => {
+        setConformPassword(e.target.value);
+    };
     const [creatUser, response] = useGetUserMutation();
     const userdata = {
         name: Name,
@@ -121,8 +46,7 @@ function Sign_Up() {
         email: Email,
         referral_code: Referral,
     };
-    console.log(response);
-    // console.log(userdata);
+
     const submit = async (e) => {
         e.preventDefault();
         try {
@@ -150,7 +74,78 @@ function Sign_Up() {
             console.log(err);
         }
     };
+    const [creatOtp, responseForotp] = useVerifyUserMutation();
 
+    const forOtpData = {
+        otp: forotp,
+        username: userName,
+    };
+
+    const otpdataSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            if (forotp == "") {
+                swal("Oops!", "Please fill all the fields", "error");
+            }
+            await creatOtp(forOtpData).then((response) => {
+                if (response.data.status === "success") {
+                    swal(
+                        "Success",
+                        "You have successfully signed up",
+                        "success"
+                    );
+                    setForPasswords(false);
+                    window.localStorage.setItem("hash", response.data.hash);
+                } else {
+                    swal({
+                        title: response.data.title,
+                        text: response.data.msg,
+                        icon: response.data.status,
+                    });
+                }
+            });
+        } catch (err) {
+            console.log(err);
+        }
+    };
+    const [creatPassword, responseForPassword] = useUserPasswordMutation();
+    const userPasswodData = {
+        name: Name,
+        username: userName,
+        email: Email,
+        referral_code: Referral,
+        password: userPassword,
+        confirm_password: conformPassword,
+        hash: window.localStorage.getItem("hash"),
+    };
+
+    const finelSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            if (userPassword == "" || conformPassword == "") {
+                swal("Oops!", "Please fill all the fields", "error");
+            }
+            await creatPassword(userPasswodData).then((response) => {
+                if (response.data.status === "success") {
+                    swal(
+                        "Success",
+                        "You have successfully signed up",
+                        "success"
+                    );
+                    window.localStorage.removeItem("hash");
+                    History.push("/auth/login");
+                } else {
+                    swal({
+                        title: response.data.title,
+                        text: response.data.msg,
+                        icon: response.data.status,
+                    });
+                }
+            });
+        } catch (err) {
+            console.log(err);
+        }
+    };
     return (
         <section>
             <section
@@ -187,7 +182,6 @@ function Sign_Up() {
                                     id="name"
                                     className="py-3 rounded border border-gray-300"
                                     placeholder="   Enter your name"
-                                    // ref={name}
                                     onChange={forName}
                                 />
                             </div>
@@ -205,7 +199,6 @@ function Sign_Up() {
                                     className="py-3 rounded border border-gray-300"
                                     maxLength="10"
                                     placeholder="   Enter your mobile no."
-                                    // ref={username}
                                     onChange={forUserName}
                                 />
                             </div>
@@ -223,7 +216,6 @@ function Sign_Up() {
                                     className="py-3 rounded border border-gray-300"
                                     placeholder="   Enter your email id"
                                     onChange={forUserEmail}
-                                    // ref={email}
                                 />
                             </div>
                             <div className="flex mb-4 flex-col">
@@ -240,7 +232,6 @@ function Sign_Up() {
                                     className="py-3 rounded border border-gray-300"
                                     maxLength="10"
                                     placeholder="   Enter referral code (optional)"
-                                    // ref={referral_code}
                                     onChange={forReferral}
                                 />
                             </div>
@@ -302,6 +293,7 @@ function Sign_Up() {
                                     minLength="6"
                                     maxLength="6"
                                     placeholder="   Enter your otp"
+                                    onChange={otpvalue}
                                     // ref={otp_code}
                                 />
                             </div>
@@ -314,7 +306,7 @@ function Sign_Up() {
                                 </Link>
                                 <button
                                     type="submit"
-                                    // onClick={otpdataSubmit}
+                                    onClick={otpdataSubmit}
                                     className="verify_otp_btn px-6 py-4 bg-primary text-white font-medium rounded"
                                 >
                                     Submit
@@ -351,7 +343,6 @@ function Sign_Up() {
                                 type="hidden"
                                 name="hase"
                                 value=""
-                                // ref={has}
                                 id="hase"
                                 className="py-3 rounded border border-gray-300 placeholder-gray-400"
                             />
@@ -367,8 +358,8 @@ function Sign_Up() {
                                     className="py-3 rounded border border-gray-300 placeholder-gray-400"
                                     name="password"
                                     id="password"
-                                    // ref={password}
                                     placeholder="   Enter your password"
+                                    onChange={forPassword}
                                 />
                             </div>
                             <div className="flex mb-4 flex-col">
@@ -383,8 +374,8 @@ function Sign_Up() {
                                     className="py-3 rounded border border-gray-300 placeholder-gray-400"
                                     name="confirm_password"
                                     id="confirm_password"
-                                    // ref={conformPassword}
                                     placeholder="   Enter Confirm Password"
+                                    onChange={forConfirmPassword}
                                 />
                             </div>
                             <div className="flex flex-row justify-between items-center">
@@ -393,7 +384,7 @@ function Sign_Up() {
                                 </Link>
                                 <button
                                     type="submit"
-                                    // onClick={finelSubmit}
+                                    onClick={finelSubmit}
                                     className="px-6 py-4 bg-primary text-white font-medium rounded  register_set_password_btn"
                                 >
                                     Submit

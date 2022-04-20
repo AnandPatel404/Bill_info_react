@@ -15,7 +15,35 @@ export const SignInSlice = createApi({
                 };
             },
         }),
+        verifyUser: builder.mutation({
+            query: (verifyUser) => {
+                return {
+                    url: "/otp_verify",
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: verifyUser,
+                };
+            },
+        }),
+        userPassword: builder.mutation({
+            query: (userDetails) => {
+                return {
+                    url: "/register_set_password",
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: userDetails,
+                };
+            },
+        }),
     }),
 });
 
-export const { useGetUserMutation } = SignInSlice;
+export const {
+    useGetUserMutation,
+    useVerifyUserMutation,
+    useUserPasswordMutation,
+} = SignInSlice;
