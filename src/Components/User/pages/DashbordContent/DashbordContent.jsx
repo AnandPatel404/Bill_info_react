@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useRef, useState } from "react";
+import Slider from "./Slider";
+import Grid from "./grid";
+import Ref_and_svg from "./Ref_and_svg";
 function DashbordContent() {
     return (
         <section className="relative">
-            <section className="bg-[#f6f9fc] h-screen">
-                <div className="pt-8">
+            <section className="bg-[#f6f9fc] ">
+                <div className="pt-10">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 py-4 gap-4 ">
-                        <div className="p-4 border-[1px] border-[rgb(236, 239, 241)] shadw bg-[#fff] rounded-sm">
+                        <div className="p-4 border-[1px] border-[#eceff1] shadw bg-[#fff] rounded-sm">
                             <div className="my-1 text-xl text-[#495057] font-medium">
                                 No plan
                             </div>
@@ -13,7 +16,7 @@ function DashbordContent() {
                                 Active ROffer Plan
                             </div>
                         </div>
-                        <div className="p-4 border-[1px] border-[rgb(236, 239, 241)] shadw bg-[#fff] rounded-sm">
+                        <div className="p-4 border-[1px] border-[#eceff1] shadw bg-[#fff] rounded-sm">
                             <div className="my-1 text-xl text-[#495057] font-medium">
                                 No plan
                             </div>
@@ -21,7 +24,7 @@ function DashbordContent() {
                                 Active ROffer Plan
                             </div>
                         </div>
-                        <div className="p-4 border-[1px] border-[rgb(236, 239, 241)] shadw bg-[#fff] rounded-sm">
+                        <div className="p-4 border-[1px] border-[#eceff1] shadw bg-[#fff] rounded-sm">
                             <div className="my-1 text-xl text-[#495057] font-medium">
                                 No plan
                             </div>
@@ -29,7 +32,7 @@ function DashbordContent() {
                                 Active ROffer Plan
                             </div>
                         </div>
-                        <div className="p-4 border-[1px] border-[rgb(236, 239, 241)] shadw bg-[#fff] rounded-sm">
+                        <div className="p-4 border-[1px] border-[#eceff1] shadw bg-[#fff] rounded-sm">
                             <div className="my-1 text-xl text-[#495057] font-medium">
                                 No plan
                             </div>
@@ -39,6 +42,10 @@ function DashbordContent() {
                         </div>
                     </div>
                 </div>
+
+                <Slider />
+                <Grid />
+                <Ref_and_svg />
             </section>
         </section>
     );

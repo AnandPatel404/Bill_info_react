@@ -107,6 +107,9 @@ const VarticalNavbar = lazy(() =>
 const DasbordContennt = lazy(() =>
     import("./Components/User/pages/DashbordContent/DashbordContent")
 );
+const Ref_and_svg = lazy(() =>
+    import("./Components/User/pages/DashbordContent/Ref_and_svg")
+);
 const Try_Service = lazy(() =>
     import("./Components/User/pages/Try_services/Try_services")
 );
@@ -223,14 +226,17 @@ function App() {
                             <Container>
                                 <DasbordContennt />
                             </Container>
+                            {/* <Container>
+                                <Ref_and_svg />
+                            </Container> */}
                             <User_Footer />
                         </VarticalNavbar>
                     </Route>
                     <Route exact path="/users/try_service">
                         <VarticalNavbar>
                             <Try_Service />
-                            <User_Footer />
                         </VarticalNavbar>
+                        <User_Footer />
                     </Route>
                     <Route exact path="/users/op_status">
                         <VarticalNavbar>

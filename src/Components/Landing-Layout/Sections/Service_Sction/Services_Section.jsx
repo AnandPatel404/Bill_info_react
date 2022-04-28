@@ -88,8 +88,6 @@ function Services_Section() {
         dots: false,
         responsiveClass: true,
         nav: true,
-        autoplay: false,
-        // navContainer: true,
         navText: [
             `<svg xmlns="http://www.w3.org/2000/svg" class="pr-1 icon icon-tabler icon-tabler-caret-left" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#374151" fill="#374151" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 15l-6 -6l-6 6h12" transform="rotate(270 12 12)" /></svg>`,
             `<svg xmlns="http://www.w3.org/2000/svg" class="pl-1 icon icon-tabler icon-tabler-caret-right" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#374151" fill="#374151" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 15l-6 -6l-6 6h12" transform="rotate(90 12 12)" /></svg>`,
