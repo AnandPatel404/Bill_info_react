@@ -1,8 +1,12 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Slider from "./Slider";
 import Grid from "./grid";
 import Ref_and_svg from "./Ref_and_svg";
 function DashbordContent() {
+    const [Show, setShow] = useState("");
+    useEffect(() => {
+        fetch("http://localhost:8000/users/dashboard");
+    });
     return (
         <section className="relative">
             <section className="bg-[#f6f9fc] ">

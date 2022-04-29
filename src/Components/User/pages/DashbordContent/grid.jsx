@@ -113,12 +113,12 @@ function grid() {
                         </div>
                         <div className="flex w-2/4 my-2 md:w-11/12 items-center justify-center lg:items-start px-2 md:justify-end order-first md:order-last">
                             <svg
-                                class="px-4"
+                                className="px-4"
                                 viewBox="0 0 512 512"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                             >
-                                <g clip-path="url(#clip0_413_3248)">
+                                <g clipPath="url(#clip0_413_3248)">
                                     <rect
                                         y="48"
                                         width="512"
@@ -238,12 +238,12 @@ function grid() {
                         </div>
                         <div className="flex w-2/4 my-2 md:w-11/12 items-center justify-center lg:items-start px-2 md:justify-end order-first md:order-last">
                             <svg
-                                class="px-4 md:w-8/12"
+                                className="px-4 md:w-8/12"
                                 viewBox="0 0 512 512"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                             >
-                                <g clip-path="url(#clip0_409_3253)">
+                                <g clipPath="url(#clip0_409_3253)">
                                     <path
                                         d="M24 81V512H404V81H24Z"
                                         fill="#1652F0"
@@ -261,8 +261,8 @@ function grid() {
                                         fill="white"
                                     ></path>
                                     <path
-                                        fill-rule="evenodd"
-                                        clip-rule="evenodd"
+                                        fillRule="evenodd"
+                                        clipRule="evenodd"
                                         d="M24 81H404L323.5 0H24V81Z"
                                         fill="#D4EEFF"
                                     ></path>

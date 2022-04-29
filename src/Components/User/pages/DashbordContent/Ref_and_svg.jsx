@@ -22,7 +22,7 @@ function Ref_and_svg() {
                             />
                             <button
                                 type="submit"
-                                class=" text-[#34c38f] btn-two btn-outline-success waves-effect waves-light px-6 py-[0.53rem] "
+                                className=" text-[#34c38f] btn-two btn-outline-success waves-effect waves-light px-6 py-[0.53rem] "
                             >
                                 Copy Link
                             </button>
@@ -190,9 +190,9 @@ function Ref_and_svg() {
                     <path
                         d="M136.178 151.929C136.178 151.929 143.723 155.849 145.454 156.614C146.372 152.264 150.532 150.81 151.182 146.736"
                         stroke="#1652F0"
-                        stroke-miterlimit="10"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeMiterlimit="10"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                     ></path>
                     <path
                         opacity="0.1"
@@ -293,8 +293,8 @@ function Ref_and_svg() {
                     <path
                         d="M363.354 150.511C362.349 156.459 354.719 160.073 354.719 160.073L342.249 166.652"
                         stroke="#738799"
-                        stroke-miterlimit="10"
-                        stroke-linecap="round"
+                        strokeMiterlimit="10"
+                        strokeLinecap="round"
                     ></path>
                     <path
                         d="M450.66 281.365C450.985 281.47 451.282 281.566 451.569 281.662L455.193 272.902C454.914 272.743 454.633 272.587 454.351 272.434L450.66 281.365V281.365ZM356.392 331.157L364.405 327.16C364.357 326.826 364.31 326.491 364.262 326.166L356.105 330.239C356.201 330.555 356.296 330.871 356.392 331.157V331.157Z"

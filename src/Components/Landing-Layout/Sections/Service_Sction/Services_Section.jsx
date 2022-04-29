@@ -10,6 +10,7 @@ import Light_bill from "../Services_inputs/Light_bill";
 import Water from "../Services_inputs/Water";
 import Broadband from "../Services_inputs/Brodband";
 import Google_pay from "../Services_inputs/Google_pay";
+import axios from "axios";
 function Services_Section() {
     const [forMobile, setforMobile] = useState(false);
     const [forDth, setforDth] = useState(false);
@@ -18,7 +19,7 @@ function Services_Section() {
     const [forWater, setforWater] = useState(false);
     const [forBroadband, setforBroadband] = useState(false);
     const [forGOogle, setforGOogle] = useState(false);
-
+    const [States, setStates] = useState([]);
     const openMobile = () => {
         setforMobile(true);
         setforDth(false);
@@ -123,6 +124,11 @@ function Services_Section() {
             });
         });
     });
+    useEffect(() => {
+        axios
+            .get("http://localhost:8000/get_all_states")
+            .then((response) => setStates(response.data.results));
+    }, []);
     return (
         <section className="text-gray-800 ">
             <div className="max-w-screen-xl mx-auto pb-32 px-12 sm:px-8 md:px-4 xl:px-16 pt-20 sm:pt-24 md:pt-34 overflow-x-hidden">
@@ -242,7 +248,7 @@ function Services_Section() {
                         </button>
                     </div>
                 </OwlCarousel>
-                {forMobile ? <Mobile /> : ""}
+                {forMobile ? <Mobile States={States} /> : ""}
                 {forDth ? <Dth /> : ""}
                 {forPostpaid ? <Postpaid /> : ""}
                 {forLightBill ? <Light_bill /> : ""}

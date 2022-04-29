@@ -33,8 +33,8 @@ function Log_In() {
                         "You have successfully signed up",
                         "success"
                     );
+                    console.log(response);
                     History.push("/users/dashboard");
-                    // console.log(response);
                 } else {
                     swal({
                         title: response.data.title,
