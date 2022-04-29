@@ -2,7 +2,7 @@ import React from "react";
 import { UilCopy } from "@iconscout/react-unicons";
 function Ref_and_svg() {
     return (
-        <section className="grid grid-cols-1 lg:grid-cols-2 p-2">
+        <section className="grid grid-cols-1 lg:grid-cols-2 p-2 mb-20">
             <div className="flex-col flex justify-center order-last lg:order-first">
                 <div className="flex flex-col ">
                     <h1 className="text-[2.25rem] text-[#495057] mb-2 font-medium">

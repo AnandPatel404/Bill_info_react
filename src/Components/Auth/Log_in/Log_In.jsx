@@ -1,32 +1,53 @@
-import { React, useRef } from "react";
+import { React, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { useUserLogInMutation } from "../../../Redux/Api/User_SIgn";
 import swal from "sweetalert";
-import axios from "axios";
 function Log_In() {
-    const history = useHistory();
-    // const [data, setData] = useState({});
-    const username = useRef(null);
-    const password = useRef(null);
+    const History = useHistory();
+    const [MoBileNumber, setMoBileNumber] = useState("");
+    const [userPassword, setUserPassword] = useState("");
+    const forUserNAme = (e) => {
+        setMoBileNumber(e.target.value);
+    };
+    const forPassword = (e) => {
+        setUserPassword(e.target.value);
+    };
+    const [loginUser, response] = useUserLogInMutation();
+
+    const userData = {
+        username: MoBileNumber,
+        password: userPassword,
+    };
+
     const reddirect = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios({
-                method: "post",
-                url: "http://localhost:8000/auth/login",
-                data: {
-                    username: username.current.value,
-                    password: password.current.value,
-                },
-            });
-            if (response.data.status === "success") {
-                swal("Login Successfully", "", "success");
-                history.push("/");
+            if (MoBileNumber == "" || userPassword == "") {
+                swal("Oops!", "Please fill all the fields", "error");
             }
-            console.log(response);
+            await loginUser(userData).then((response) => {
+                if (response.data.status === "success") {
+                    console.log("this is done");
+                    swal(
+                        "Success",
+                        "You have successfully signed up",
+                        "success"
+                    );
+                    History.push("/users/dashboard");
+                    // console.log(response);
+                } else {
+                    swal({
+                        title: response.data.title,
+                        text: response.data.msg,
+                        icon: response.data.status,
+                    });
+                }
+            });
         } catch (e) {
             console.log(e);
         }
     };
+
     return (
         <section className="flex flex-col items-center bg-primary_dark h-screen ">
             <div className="pt-14 pb-10">
@@ -39,12 +60,7 @@ function Log_In() {
                 style={{ boxShadow: "0 1px 46px -4px rgb(0 0 0 / 28%)" }}
             >
                 <div className="w-full h-full flex flex-col">
-                    <form
-                        action=""
-                        className="w-full mx-auto"
-                        method="POST"
-                        onSubmit={reddirect}
-                    >
+                    <form action="" className="w-full mx-auto">
                         <div className="flex flex-col mb-4">
                             <label
                                 htmlFor="username"
@@ -60,7 +76,7 @@ function Log_In() {
                                 placeholder="   Enter your mobile no."
                                 tabIndex="1"
                                 autoFocus
-                                ref={username}
+                                onChange={forUserNAme}
                             />
                         </div>
                         <div className="flex flex-col mb-4">
@@ -77,7 +93,7 @@ function Log_In() {
                                 id="password"
                                 placeholder="   Enter your password."
                                 tabIndex="2"
-                                ref={password}
+                                onChange={forPassword}
                             />
                         </div>
                         <div className="flex flex-row justify-between items-center">
@@ -92,6 +108,7 @@ function Log_In() {
                                 type="submit"
                                 className="px-6 py-4 bg-primary_dark text-white font-medium rounded whitespace-nowrap"
                                 tabIndex="3"
+                                onClick={reddirect}
                             >
                                 Sign in
                             </button>

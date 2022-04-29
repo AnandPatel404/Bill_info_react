@@ -23,13 +23,34 @@ function Navbar_User(props) {
     const userProfile = () => {
         setIsOpen(!isOpen);
     };
+
+    // useEffect(() => {
+    //     document.querySelectorAll("ul li").forEach((items) => {
+    //         console.log(items);
+    //         items.addEventListener("click", (e) => {
+    //             e.preventDefault();
+    //             document.querySelectorAll("li").forEach((em) => {
+    //                 em.classList.remove("activeNAv");
+    //             });
+    //             items.classList.add("activeNAv");
+    //         });
+    //     });
+    // });
     return (
-        <section>
+        <section className="overflow-hidden">
             <nav className={`${count ? " close" : ""}`}>
-                <div className="logo-name text-primary_dark">
+                <div className="logo-name items-center">
                     <span className="logo_name font-semibold text-[1.4rem] cursor-pointer">
-                        <Link to="/users/dashboard">Billinfo</Link>
+                        <Link
+                            to="/users/dashboard"
+                            className=" text-primary_dark"
+                        >
+                            Billinfo
+                        </Link>
                     </span>
+                    {/* <i onClick={c} className=" cursor-pointer">
+                        <Unicons.UilTimes />
+                    </i> */}
                 </div>
 
                 <div className="menu-items ">
@@ -65,7 +86,7 @@ function Navbar_User(props) {
                         </li>
                         {/* TODO : this is gst billing */}
                         <li>
-                            <Link to="/users/op_status">
+                            <Link to="/users/gst/bill_details">
                                 <i>
                                     <Unicons.UilBriefcase />
                                 </i>
@@ -137,9 +158,16 @@ function Navbar_User(props) {
             <section className="dashboard">
                 <div className="top">
                     <div className="py-3 sidebar-toggle flex items-center space-x-3">
-                        <i onClick={c}>
-                            <Unicons.UilBars />
-                        </i>
+                        {count ? (
+                            <i onClick={c}>
+                                <Unicons.UilBars />
+                            </i>
+                        ) : (
+                            <i onClick={c}>
+                                <Unicons.UilTimes />
+                            </i>
+                        )}
+
                         <h1 className="hidden lg:inline-block text-base">
                             {lastIndex}
                         </h1>
@@ -147,10 +175,10 @@ function Navbar_User(props) {
                     <div>
                         <div className="two_icon flex text-icon_color text-2xl lg:space-x-3">
                             <div className="collaps_icon hidden lg:inline-block items-center mt-1">
-                                <Unicons.UilExpandArrows onClick={fullScreen} />
+                                <Unicons.UilMinusPath onClick={fullScreen} />
                             </div>
                             <div
-                                className="user_icon text-icon_color flex items-center gap-2 md:mr-6 cursor-pointer"
+                                className="user_icon text-icon_color flex items-center  md:mr-6 cursor-pointer"
                                 onClick={userProfile}
                             >
                                 <img
@@ -158,8 +186,10 @@ function Navbar_User(props) {
                                     alt=""
                                     className="w-9 h-9 p-1"
                                 />
-                                <p className="text-lg text-center">anand</p>
-                                <Unicons.UilAngleDown />
+                                <p className="text-base text-center">anand</p>
+                                <i className="text-xs">
+                                    <Unicons.UilAngleDown />
+                                </i>
                             </div>
                         </div>
                     </div>

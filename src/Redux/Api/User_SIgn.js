@@ -39,6 +39,18 @@ export const SignInSlice = createApi({
                 };
             },
         }),
+        UserLogIn: builder.mutation({
+            query: (userDetails) => {
+                return {
+                    url: "/login",
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: userDetails,
+                };
+            },
+        }),
     }),
 });
 
@@ -46,4 +58,5 @@ export const {
     useGetUserMutation,
     useVerifyUserMutation,
     useUserPasswordMutation,
+    useUserLogInMutation,
 } = SignInSlice;

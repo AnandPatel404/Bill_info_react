@@ -254,9 +254,6 @@ nav .menu-items{
     border-radius: 50%;
     background-color: var(--primary-color);
 }
-body.dark li a:hover:before{
-    background-color: var(--text-color);
-}
 .menu-items li a i{
     font-size: 24px;
     min-width: 45px;
@@ -264,12 +261,10 @@ body.dark li a:hover:before{
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--black-light-color);
 }
 .menu-items li a .link-name{
     font-size: 18px;
-    font-weight: 400;
-    color: var(--black-light-color);    
+    font-weight: 400;    
     transition: var(--tran-05);
 }
 nav.close li a .link-name{
@@ -292,6 +287,10 @@ body.dark .nav-links li a:hover .link-name{
     display: flex;
     align-items: center;
     white-space: nowrap;
+}
+.activeNAv{
+    /* background-color: var(--primary-color); */
+    color: var(--primary-color);
 }
 .menu-items .mode-toggle{
     position: absolute;
@@ -542,6 +541,7 @@ nav.close ~ .dashboard .top{
 @media (max-width: 400px) {
     nav{
         width: 0px;
+        
     }
     nav.close{
         width: 73px;
@@ -558,6 +558,7 @@ nav.close ~ .dashboard .top{
         opacity: 0;
         pointer-events: none;
     }
+
     nav.close li a .link-name{
         opacity: 0;
         pointer-events: none;
@@ -645,4 +646,22 @@ nav.close ~ .dashboard .top{
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+.form-control {
+    padding: 0.47rem 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
+    -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }

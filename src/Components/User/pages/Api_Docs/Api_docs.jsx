@@ -1,16 +1,14 @@
 import React from "react";
 
-function Api_docs() {
+function Api_docs(props) {
     return (
-        <div className="my-4">
+        <div className={`${props.className ? props.className : " "}`}>
             <div className="text-base font-semibold  flex justify-between w-full">
                 <div>
-                    <p className="text-[#495057] ">
-                        Plans & Roffer Information
-                    </p>
+                    <p className="text-[#495057] ">{props.first}</p>
                 </div>
                 <div>
-                    <p className="text-[#495057]">API Method : GET</p>
+                    <p className="text-[#495057]">{props.second}</p>
                 </div>
             </div>
         </div>

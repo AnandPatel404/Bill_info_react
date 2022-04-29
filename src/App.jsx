@@ -107,14 +107,14 @@ const VarticalNavbar = lazy(() =>
 const DasbordContennt = lazy(() =>
     import("./Components/User/pages/DashbordContent/DashbordContent")
 );
-const Ref_and_svg = lazy(() =>
-    import("./Components/User/pages/DashbordContent/Ref_and_svg")
-);
 const Try_Service = lazy(() =>
     import("./Components/User/pages/Try_services/Try_services")
 );
 const Operator_Status = lazy(() =>
     import("./Components/User/pages/oporetor_status/Opretor_Status")
+);
+const Gst_Billing = lazy(() =>
+    import("./Components/User/pages/Gst_Billing/Gst_Billing")
 );
 const Plan = lazy(() => import("./Components/User/pages/Plan/Plan"));
 const PlanDetils = lazy(() =>
@@ -147,6 +147,7 @@ const User_Footer = lazy(() => import("./Components/User/Footer/User_Footer"));
 //helpers
 const Card = lazy(() => import("./Components/Helper/Card"));
 const Container = lazy(() => import("./Components/Helper/Container"));
+const Upper_Hader = lazy(() => import("./Components/Helper/Upper_Hader"));
 import Loader from "./Components/Helper/Loader";
 
 function App() {
@@ -226,32 +227,44 @@ function App() {
                             <Container>
                                 <DasbordContennt />
                             </Container>
-                            {/* <Container>
-                                <Ref_and_svg />
-                            </Container> */}
                             <User_Footer />
                         </VarticalNavbar>
                     </Route>
-                    <Route exact path="/users/try_service">
+                    {/* <Route exact path="/users/try_service">
                         <VarticalNavbar>
                             <Try_Service />
                         </VarticalNavbar>
                         <User_Footer />
-                    </Route>
+                    </Route> */}
                     <Route exact path="/users/op_status">
                         <VarticalNavbar>
                             <Container>
-                                <Card>
+                                <Card className="mt-16">
                                     <Operator_Status />
                                 </Card>
                             </Container>
+                            <User_Footer />
                         </VarticalNavbar>
-                        <User_Footer />
+                    </Route>
+                    <Route exact path="/users/gst/bill_details">
+                        <VarticalNavbar>
+                            <Container>
+                                <Upper_Hader
+                                    className="mt-14 mb-4"
+                                    first="Bill Details"
+                                    second="BillInfo / Bill Details"
+                                />
+                                <Card>
+                                    <Gst_Billing />
+                                </Card>
+                            </Container>
+                            <User_Footer />
+                        </VarticalNavbar>
                     </Route>
                     <Route exact path="/users/plan">
                         <VarticalNavbar>
                             <Container>
-                                <Card>
+                                <Card className="mt-12">
                                     <Plan />
                                     <PlanDetils
                                         name="Starter+"
@@ -270,8 +283,8 @@ function App() {
                                     />
                                 </Card>
                             </Container>
+                            <User_Footer />
                         </VarticalNavbar>
-                        <User_Footer />
                     </Route>
                     <Route exact path="/users/purchase_report">
                         <VarticalNavbar>
@@ -280,24 +293,31 @@ function App() {
                                     <Purchase_Report />
                                 </Card>
                             </Container>
+                            <User_Footer />
                         </VarticalNavbar>
-                        <User_Footer />
                     </Route>
                     <Route exact path="/users/api_docs">
                         <VarticalNavbar>
                             <Container>
-                                <Api_docs />
+                                <Api_docs
+                                    className="mt-14 mb-4"
+                                    first="Plans & Roffer Information"
+                                    second="API Method : GET"
+                                />
                                 <Card>
                                     <Api_docs_info />
                                 </Card>
-                                <Api_docs />
+                                <Api_docs
+                                    className="my-4"
+                                    first="Operator Number & Circle Check"
+                                    second="API Method : GET"
+                                />
                                 <Card>
-                                    np
                                     <Api_docs_info />
                                 </Card>
                             </Container>
+                            <User_Footer />
                         </VarticalNavbar>
-                        <User_Footer />
                     </Route>
                     <Route exact path="/users/api_cred">
                         <VarticalNavbar>
@@ -322,8 +342,8 @@ function App() {
                                     </Card>
                                 </div>
                             </Container>
+                            <User_Footer />
                         </VarticalNavbar>
-                        <User_Footer />
                     </Route>
                     <Route exact path="/users/profile">
                         <VarticalNavbar>
@@ -332,8 +352,8 @@ function App() {
                                     <Profile />
                                 </Card>
                             </Container>
+                            <User_Footer />
                         </VarticalNavbar>
-                        <User_Footer />
                     </Route>
                     <Route exact path="/users/change_password">
                         <VarticalNavbar>
@@ -342,8 +362,8 @@ function App() {
                                     <Change_password />
                                 </Card>
                             </Container>
+                            <User_Footer />
                         </VarticalNavbar>
-                        <User_Footer />
                     </Route>
                 </Suspense>
             </Switch>
