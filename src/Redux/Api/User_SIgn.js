@@ -51,6 +51,18 @@ export const SignInSlice = createApi({
                 };
             },
         }),
+        ResendOtp: builder.mutation({
+            query: (userDetails) => {
+                return {
+                    url: "/resend_otp",
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: userDetails,
+                };
+            },
+        }),
     }),
 });
 
@@ -59,4 +71,5 @@ export const {
     useVerifyUserMutation,
     useUserPasswordMutation,
     useUserLogInMutation,
+    useResendOtpMutation,
 } = SignInSlice;

@@ -2,6 +2,7 @@ import {
     useGetUserMutation,
     useVerifyUserMutation,
     useUserPasswordMutation,
+    useResendOtpMutation,
 } from "../../../Redux/Api/User_SIgn";
 import { React, useState, useRef } from "react";
 import { Link, useHistory } from "react-router-dom";
@@ -134,6 +135,28 @@ function Sign_Up() {
                     );
                     window.localStorage.removeItem("hash");
                     History.push("/auth/login");
+                } else {
+                    swal({
+                        title: response.data.title,
+                        text: response.data.msg,
+                        icon: response.data.status,
+                    });
+                }
+            });
+        } catch (err) {
+            console.log(err);
+        }
+    };
+    const [userDetils, resp] = useResendOtpMutation();
+    const userResendOtp = {
+        username: userName,
+    };
+    const reSenddOtp = async (e) => {
+        e.preventDefault();
+        try {
+            await userDetils(userResendOtp).then((response) => {
+                if (response.data.status === "success") {
+                    swal("Success", "OTP has been sent", "success");
                 } else {
                     swal({
                         title: response.data.title,
@@ -297,12 +320,13 @@ function Sign_Up() {
                                 />
                             </div>
                             <div className="flex flex-row justify-between items-center">
-                                <Link
-                                    to=""
+                                <button
                                     className="resend_otp_btn text-sm text-primary font-semibold"
+                                    type="button"
+                                    onClick={reSenddOtp}
                                 >
                                     Resend OTP ?
-                                </Link>
+                                </button>
                                 <button
                                     type="submit"
                                     onClick={otpdataSubmit}

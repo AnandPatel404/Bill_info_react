@@ -7,7 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 function Opretor_Status() {
     return (
-        <section className="">
+        <section>
             <div className="flex flex-col tab-content  bg-[#fff] p-5 overflow-x-hidden">
                 <div className="Opretor_Status flex flex-col md:flex-row md:justify-between mb-6">
                     <div className="flex flex-col">

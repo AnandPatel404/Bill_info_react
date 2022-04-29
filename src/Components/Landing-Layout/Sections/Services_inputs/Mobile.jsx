@@ -3,7 +3,6 @@ import axios from "axios";
 function Mobile({ States }) {
     const [Data, setData] = useState([]);
     useEffect(() => {
-        // console.log(States);
         setData(States);
     }, []);
     return (

@@ -13,27 +13,29 @@ function Api_docs_info() {
     }`;
     const urls_3 = `{"status":"error","msg":"Coupon not found"}`;
     return (
-        <div className="flex w-full">
-            <div className="button_groups w-[250px] pr-6 mr-6">
-                <div className="flex flex-col ">
-                    <button className="bg-primary_dark text-white rounded mb-2 py-2 ">
-                        Prepaid Plans
-                    </button>
-                    <button className=" rounded mb-2 py-2 px-4">
-                        Prepaid Roffer
-                    </button>
-                    <button className=" rounded mb-2 py-2 px-4">
-                        DTH Info
-                    </button>
-                    <button className=" rounded mb-2 py-2 px-4">
-                        DTH Plans
-                    </button>
-                    <button className=" rounded mb-2 py-2 px-4">
-                        DTH Roffer
-                    </button>
-                    <button className=" rounded mb-2 py-2 px-4">
-                        Bill Details Fetch
-                    </button>
+        <div className="flex flex-col lg:flex-row w-full">
+            <div className="button_groups lg:w-[250px] lg:pr-6 lg:mr-6">
+                <div className="lg:flex flex-row  lg:flex-col ">
+                    <div className="grid grid-cols-1 md:grid-col-2 ">
+                        <button className="bg-primary_dark text-white rounded mb-2 py-2 ">
+                            Prepaid Plans
+                        </button>
+                        <button className=" rounded mb-2 py-2 px-4">
+                            Prepaid Roffer
+                        </button>
+                        <button className=" rounded mb-2 py-2 px-4">
+                            DTH Info
+                        </button>
+                        <button className=" rounded mb-2 py-2 px-4">
+                            DTH Plans
+                        </button>
+                        <button className=" rounded mb-2 py-2 px-4">
+                            DTH Roffer
+                        </button>
+                        <button className=" rounded mb-2 py-2 px-4">
+                            Bill Details Fetch
+                        </button>
+                    </div>
                 </div>
             </div>
 

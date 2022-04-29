@@ -24,18 +24,6 @@ function Navbar_User(props) {
         setIsOpen(!isOpen);
     };
 
-    // useEffect(() => {
-    //     document.querySelectorAll("ul li").forEach((items) => {
-    //         console.log(items);
-    //         items.addEventListener("click", (e) => {
-    //             e.preventDefault();
-    //             document.querySelectorAll("li").forEach((em) => {
-    //                 em.classList.remove("activeNAv");
-    //             });
-    //             items.classList.add("activeNAv");
-    //         });
-    //     });
-    // });
     return (
         <section className="overflow-hidden">
             <nav className={`${count ? " close" : ""}`}>

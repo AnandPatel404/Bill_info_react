@@ -3,7 +3,7 @@ import React from "react";
 function Api_docs(props) {
     return (
         <div className={`${props.className ? props.className : " "}`}>
-            <div className="text-base font-semibold  flex justify-between w-full">
+            <div className="text-base font-semibold  flex flex-col md:flex-row justify-between w-full">
                 <div>
                     <p className="text-[#495057] ">{props.first}</p>
                 </div>
